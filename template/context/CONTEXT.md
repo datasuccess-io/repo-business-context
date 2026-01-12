@@ -86,23 +86,23 @@ last_updated: YYYY-MM-DD
 
 Use this table for initial routing. Then consult the sections below for details.
 
-| If the task is…                                         | Read these files (in order)                                                                                             |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Understand the overall product & business               | `business/vision.md`, `business/strategy.md`, `product/roadmap.md`                                                      |
-| Understand who we serve                                 | `business/personas.md`, `business/value-prop.md`                                                                        |
-| Propose or modify a feature                             | `product/features.md`, `product/use-cases.md`, `business/vision.md`, `business/strategy.md`                             |
-| Change UX or write in‑app copy                          | `brand/voice.md`, `product/ux-principles.md`, `product/features.md`                                                     |
-| Change pricing or packaging                             | `business/revenue-model.md`, `business/value-prop.md`, `business/strategy.md`                                           |
-| Change system architecture or introduce a new component | `tech/architecture.md`, `tech/domain-model.md`, `development/constraints.md`, `development/decisions/*`                 |
-| Add or modify data structures / DB schema               | `tech/data-model.md`, `tech/domain-model.md`, `development/constraints.md`                                              |
-| Decide whether to use a library / tool                  | `development/constraints.md`, `development/conventions.md`, `operations/providers.md`                                   |
-| Investigate operational issues or propose infra changes | `operations/providers.md`, `operations/observability.md`, `operations/runbook.md`, `operations/deploy-log.md`           |
-| Understand what’s currently being worked on             | `operations/cycles/active.md`, then `product/roadmap.md`, `operations/cycles/backlog.md`                                |
-| Plan the next build/ship cycle                          | `operations/cycles/backlog.md`, `operations/cycles/active.md`, `operations/deploy-log.md`                               |
-| Generate marketing copy or social posts                 | `business/value-prop.md`, `business/personas.md`, `brand/voice.md`, `brand/channels.md`                                 |
-| Configure or extend agents                              | `agents/capabilities.md`, `agents/coding-agent.md`, `agents/content-agent.md`, `agents/operations-agent.md`             |
-| Audit the quality/freshness of context                  | This file (`CONTEXT.md`), `development/decisions/*`, all `status: active` docs ordered by `last_updated`                |
-| Keep context aligned with code (Context Steward tasks)  | `development/decisions/*`, `operations/deploy-log.md`, `operations/cycles/*.md`, relevant feature/tech docs per changes |
+| If the task is…                                         | Read these files (in order)                                                                                 |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Understand the overall product & business               | `business/vision.md`, `business/strategy.md`, `product/roadmap.md`                                          |
+| Understand who we serve                                 | `business/personas.md`, `business/value-prop.md`                                                            |
+| Propose or modify a feature                             | `product/features.md`, `product/use-cases.md`, `business/vision.md`, `business/strategy.md`                 |
+| Change UX or write in‑app copy                          | `brand/voice.md`, `product/ux-principles.md`, `product/features.md`                                         |
+| Change pricing or packaging                             | `business/revenue-model.md`, `business/value-prop.md`, `business/strategy.md`                               |
+| Change system architecture or introduce a new component | `tech/architecture.md`, `tech/domain-model.md`, `development/constraints.md`, `development/decisions/*`     |
+| Add or modify data structures / DB schema               | `tech/data-model.md`, `tech/domain-model.md`, `development/constraints.md`                                  |
+| Decide whether to use a library / tool                  | `development/constraints.md`, `development/conventions.md`, `operations/providers.md`                       |
+| Investigate operational issues or propose infra changes | `operations/providers.md`, `operations/observability.md`, `operations/runbook.md`                           |
+| Understand what’s currently being worked on             | `operations/cycles/active.md`, then `product/roadmap.md`, `operations/cycles/backlog.md`                    |
+| Plan the next build/ship cycle                          | `operations/cycles/backlog.md`, `operations/cycles/active.md`                                               |
+| Generate marketing copy or social posts                 | `business/value-prop.md`, `business/personas.md`, `brand/voice.md`, `brand/channels.md`                     |
+| Configure or extend agents                              | `agents/capabilities.md`, `agents/coding-agent.md`, `agents/content-agent.md`, `agents/operations-agent.md` |
+| Audit the quality/freshness of context                  | This file (`CONTEXT.md`), `development/decisions/*`, all `status: active` docs ordered by `last_updated`    |
+| Keep context aligned with code (Context Steward tasks)  | `development/decisions/*`, `operations/cycles/*.md`, relevant feature/tech docs per changes                 |
 
 ---
 
@@ -203,7 +203,7 @@ This is a brief description of each standard file and how an agent should use it
   - Development workflows (local dev, testing, CI, release).
   - Agents: Use when suggesting process changes or writing automation scripts.
 
-- **`decisions/*.md`**
+- **`decisions.md`**
   - Short decision records (ADRs) describing why certain choices were made.
   - Agents: Before proposing contradictory changes, review relevant decisions and highlight trade‑offs.
 
@@ -224,11 +224,6 @@ This is a brief description of each standard file and how an agent should use it
   - Standard operating procedures: handling incidents, restarts, manual jobs.
   - Agents: Follow as a checklist when asked to respond to operational incidents.
 
-- **`deploy-log.md`**
-
-  - Chronological log of meaningful deploys with links to PRs and cycle files.
-  - Agents: Use to understand when behavior changed and which context may be stale.
-
 - **`cycles/active.md`**
 
   - Current cycle’s objective, scope, and plan.
@@ -239,15 +234,11 @@ This is a brief description of each standard file and how an agent should use it
   - Ordered queue of ideas, bugs, and improvements.
   - Agents: When asked to “pick something useful to do next”, choose from here.
 
-- **`cycles/YYYYMMDD.md`**
-  - Completed cycles; snapshot of what was done and learned.
-  - Agents: Use for retrospectives or to understand why certain context changes occurred.
-
 ### 4.7 `/context/brand`
 
 - **`voice.md`**
 
-  - Brand personality, tone, and vocabulary.
+  - Brand basic identity, personality, tone, and vocabulary.
   - Agents: When generating any user-facing text, follow this file.
 
 - **`assets.md`**

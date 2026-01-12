@@ -136,59 +136,56 @@ RBC lets you say instead:
 Recommended structure under the repo root:
 
 ```text
-AGENTS.md                          # Root instructions for all AI agents (see below)
+AGENTS.md                    # Root instructions for all AI agents (see below)
 
 /context
-├── README.md                      # This file – explains the concept & structure
-├── CONTEXT.md                     # Map of files + routing guide for agents
+├── README.md                # This file – explains the concept & structure
+├── CONTEXT.md               # Map of files + routing guide for agents
 │
-├── business/                      # The “Why” – business model and strategy
-│   ├── vision.md                  # Problem, mission, positioning, boundaries
-│   ├── revenue-model.md           # Pricing, plans, unit economics assumptions
-│   ├── personas.md                # ICPs, jobs-to-be-done, pain points (with IDs)
-│   ├── strategy.md                # Phases, priorities, out-of-scope items
-│   └── value-prop.md              # Core value propositions and messaging pillars
+├── brand/                   # The “How it talks” – communication
+│   ├── voice.md             # Name, slogan, tone, do/don’t rules
+│   ├── assets.md            # Logo usage, colors, references to asset locations
+│   └── channels.md          # Channels (e.g. website, email, social) & per-channel nuances
+|
+├── business/                # The “Why” – business model and strategy
+│   ├── vision.md            # Problem, mission, positioning, boundaries
+│   ├── revenue-model.md     # Pricing, plans, unit economics assumptions
+│   ├── personas.md          # ICPs, jobs-to-be-done, pain points (with IDs)
+│   ├── strategy.md          # Phases, priorities, out-of-scope items
+│   └── value-prop.md        # Core value propositions and messaging pillars
+|
+├── tech/                    # The “How (logical)” – system & domain
+│   ├── architecture.md      # System architecture, components, data flow
+│   ├── domain-model.md      # Core domain concepts and business rules
+│   └── data-model.md        # Entities, relationships, key schemas
 │
-├── product/                       # The “What” – user-visible product
-│   ├── roadmap.md                 # Near / mid / long-term roadmap (by cycles)
-│   ├── features.md                # Living spec of shipped & planned features
-│   ├── use-cases.md               # Key use cases and user stories
-│   ├── ux-principles.md           # UX patterns, interaction rules, content UX
-│   └── integrations.md            # External product integrations and rules
+├── product/                 # The “What” – user-visible product
+│   ├── roadmap.md           # Near / mid / long-term roadmap
+│   ├── features.md          # Living spec of shipped & planned features
+│   ├── use-cases.md         # Key use cases and user stories
+│   ├── ux-principles.md     # UX patterns, interaction rules, content UX
+│   └── integrations.md      # External product integrations and rules
 │
-├── tech/                          # The “How (logical)” – system & domain
-│   ├── architecture.md            # System architecture, components, data flow
-│   ├── domain-model.md            # Core domain concepts and business rules
-│   └── data-model.md              # Entities, relationships, key schemas
+├── development/             # The “How (development)” – how you build
+│   ├── constraints.md       # Libraries / patterns to avoid; non-functional constraints
+│   ├── conventions.md       # Code style, patterns, folder structure
+│   ├── workflows.md         # Local dev, branching model, CI overview
+│   └── decisions.md         # Short ADR-like decision notes
 │
-├── development/                   # The “How (development)” – how you build
-│   ├── conventions.md             # Code style, patterns, folder structure
-│   ├── constraints.md             # Libraries / patterns to avoid; non-functional constraints
-│   ├── workflows.md               # Local dev, branching model, CI overview
-│   └── decisions/                 # Short ADR-like decision notes
-│       └── YYYYMMDD-key-decision.md
-│
-├── operations/                    # The “How it runs” – operations & cycles
-│   ├── providers.md               # SaaS, infra, AI tools, where credentials live (no secrets)
-│   ├── observability.md           # Logging, metrics, monitoring, analytics
-│   ├── runbook.md                 # Incident handling, manual operational tasks
-│   ├── deploy-log.md              # High-level record of meaningful deploys
-│   └── cycles/                    # Build/ship cycles (formerly “sprints”)
-│       ├── active.md              # Current focus – single most important file while building
-│       ├── backlog.md             # Ordered list of candidate work items
-│       └── YYYYMMDD.md            # Snapshot of a completed cycle (what shipped, why)
-│
-├── brand/                         # The “How it talks” – communication
-│   ├── voice.md                   # Tone, vocabulary, do/don’t rules
-│   ├── assets.md                  # Logo usage, colors, references to asset locations
-│   └── channels.md                # Channels (e.g. website, email, social) & per-channel nuances
-│
-└── agents/                        # Agent-specific context
-    ├── coding-agent.md            # How coding agents should behave & which docs to use
-    ├── content-agent.md           # How content/copy agents should behave
-    ├── operations-agent.md        # How ops/monitoring agents should behave
-    ├── context-steward.md         # “Gardener” agent for keeping /context fresh
-    └── capabilities.md            # Available AI tools, MCP servers, and agent platforms
+├── operations/              # The “How it runs” – operations & cycles
+│   ├── providers.md         # SaaS, infra, AI tools, where credentials live (no secrets)
+│   ├── observability.md     # Logging, metrics, monitoring, analytics
+│   ├── runbook.md           # Incident handling, manual operational tasks
+│   └── cycles/              # Build/ship cycles (formerly “sprints”)
+│       ├── active.md        # Current focus – single most important file while building
+│       └── backlog.md       # Ordered list of candidate work items
+|
+└── agents/                  # Agent-specific context
+    ├── coding-agent.md      # How coding agents should behave & which docs to use
+    ├── content-agent.md     # How content/copy agents should behave
+    ├── operations-agent.md  # How ops/monitoring agents should behave
+    ├── context-steward.md   # “Gardener” agent for keeping /context fresh
+    └── capabilities.md      # Available AI tools, MCP servers, and agent platforms
 ```
 
 You don’t have to create or fill every file immediately. Start small (see §10) and grow as needed.
@@ -444,15 +441,12 @@ For a new repo:
 
    At minimum, complete:
 
+   - `brand/voice.md` — how your product should speak.
    - `business/vision.md` — what you’re building, for whom, and what is out of scope.
    - `business/personas.md` — 1–3 key personas with IDs.
    - `product/features.md` — 3–5 initial features with IDs.
    - `tech/architecture.md` — brief description of your stack and architecture.
-   - `tech/data-model.md` — high-level description of core entities.
-   - `brand/voice.md` — how your product should speak.
    - `operations/cycles/active.md` — your current objective.
-   - `operations/providers.md` — key providers (e.g. hosting, DB, auth, email).
-   - `agents/coding-agent.md` — where coding agents should look and how they should behave.
 
 3. **Hook your IDE agents to `AGENTS.md`**
 
@@ -460,6 +454,7 @@ For a new repo:
      - `AGENTS.md` is automatically loaded or preferred.
      - File search includes `/context` aggressively.
    - If your IDE allows nested `AGENTS.md` (e.g. inside `/context`), you can move or duplicate it there as well.
+     - This allow you to have two levels of agent instructions: repo-wide (root) and context-specific.
 
 4. **Validate**
 
