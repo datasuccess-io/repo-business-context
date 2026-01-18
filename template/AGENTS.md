@@ -26,6 +26,11 @@ It applies to:
 
 You must treat `/context` as the primary context for your decisions.
 
+Notes on paths:
+
+- All file paths referenced below are relative to `/context/` unless explicitly stated.
+- The cycles directory is `/context/operations/cycles/` (plural: `cycles`). The current cycle file to update is `operations/cycles/active.md`.
+
 ---
 
 ## 2. Golden rules
@@ -38,7 +43,6 @@ You must treat `/context` as the primary context for your decisions.
 
 3. **Keep context and reality aligned.**  
    If your work changes what is true about the product, you must:
-
    - Propose updates to `/context`, or
    - Apply them directly if allowed, updating `last_updated` and `status`.
 
@@ -46,6 +50,12 @@ You must treat `/context` as the primary context for your decisions.
    When presenting a plan or change, state:
    - Which `/context` files you read.
    - Which IDs (features, personas, cycles) you targeted.
+
+5. **Keep the active cycle current.**  
+   While planning and executing work, update `operations/cycles/active.md` to reflect:
+   - The chosen objective and scope.
+   - In‑progress items, links to branches/PRs/commits, and completed items.
+   - Post‑deploy notes and a link to any snapshot (e.g., `operations/cycles/YYYYMMDD.md`).
 
 ---
 
@@ -144,6 +154,16 @@ Examples: “What are we currently working on?”, “Plan the next cycle”, �
      - References backlog items by ID.
      - Fits within the current strategic priorities.
    - Update `operations/cycles/active.md` to match the chosen plan (if allowed).
+
+3. While working:
+   - Keep `operations/cycles/active.md` updated in near‑real time:
+     - Mark items as in progress/done (e.g., checklist or status list).
+     - Link PRs/branches/commits for traceability.
+     - Record any scope changes and decisions (briefly; link to ADRs if needed).
+     - Update `last_updated` in front‑matter on meaningful changes.
+   - On deploy/milestone:
+     - Create a dated snapshot `operations/cycles/YYYYMMDD.md` summarizing what shipped and learnings.
+     - Reset or update `operations/cycles/active.md` for the next objective.
 
 ### 4.6 Content & marketing tasks
 

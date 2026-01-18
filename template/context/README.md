@@ -97,7 +97,6 @@ RBC lets you say instead:
 
 2. **AI‑first structure**  
    Files are written to be easy for LLMs:
-
    - Clear headings and sections.
    - Consistent patterns across files.
    - Short, focused documents (ideally < 500–800 lines).
@@ -201,12 +200,10 @@ Traditional sprints are designed for teams and calendars. For a solo founder + A
 RBC reflects this with **cycles**:
 
 - **`operations/cycles/active.md`**
-
   - The “now” file. It defines the current objective, links to relevant context, and outlines a short plan.
   - Agents should read this first when asked “what are we working on?”.
 
 - **`operations/cycles/backlog.md`**
-
   - Ordered list of ideas, bugs, refactors, and improvements.
   - Each item can reference context by IDs (persona IDs, feature IDs, etc.).
 
@@ -342,12 +339,10 @@ Agents should treat “Planned” as **ideas, not reality**.
 Be explicit about what **must not** happen; this is extremely helpful for AI:
 
 - In `development/constraints.md`:
-
   - “Do NOT introduce Redux; use React Context + custom hooks.”
   - “Do NOT store PII in analytics events.”
 
 - In `tech/architecture.md`:
-
   - “We will not build a native mobile app in v1; web only.”
 
 - In `brand/voice.md`:
@@ -433,14 +428,12 @@ Document these in `development/workflows.md` and `operations/runbook.md` as they
 For a new repo:
 
 1. **Create the basic structure**
-
    - Add `/context` and copy this template’s files.
    - Add `AGENTS.md` at the repo root.
 
 2. **Fill the minimal core**
 
    At minimum, complete:
-
    - `brand/voice.md` — how your product should speak.
    - `business/vision.md` — what you’re building, for whom, and what is out of scope.
    - `business/personas.md` — 1–3 key personas with IDs.
@@ -449,7 +442,6 @@ For a new repo:
    - `operations/cycles/active.md` — your current objective.
 
 3. **Hook your IDE agents to `AGENTS.md`**
-
    - In Cursor, Windsurf, Copilot Workspace or similar tools, configure them so that:
      - `AGENTS.md` is automatically loaded or preferred.
      - File search includes `/context` aggressively.
