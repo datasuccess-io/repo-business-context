@@ -31,4 +31,14 @@ Because the researcher are consulting multiples LLMs to validate and elaborate t
 
 # Template
 
-Within the `/template` folder you can find the basic strutucture of files to apply the **Repo Business Context** concept to any project.
+The `/template` folder is a portable starter kit you can copy into any repository to adopt the **Repo Business Context (RBC/RCP)** approach. It contains:
+
+- `/template/context/*` – the context map (`CONTEXT.md`) and placeholders for business/product/tech/ops docs.
+- `/template/.github/*` – automation assets (PR template, label sync, commit/PR checks, Context Steward workflow).
+- `/template/context/development/decisions/*` – ADR templates and guidelines.
+- Optional: GitHub Releases automation (via Release Drafter) to aggregate PRs into release notes without duplicating in-repo logs.
+
+Notes:
+
+- This research repo includes `/template` only as reference assets. Copy what you need into your target repo’s root and adjust.
+- IDEs/agents should treat `/template` as examples, not active project files.
