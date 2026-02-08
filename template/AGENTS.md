@@ -81,101 +81,19 @@ You may cache this mental model for the duration of the session, but you must **
 
 ---
 
-## 4. Routing by task type
+## 4. Routing by task type (Specialized Agents)
 
-For each incoming user request, categorize it and route accordingly.
+For each incoming user request, categorize it and invoke the corresponding agent. Refer to the specific agent file for detailed protocol.
 
-### 4.1 Business & product tasks
-
-Examples: “Should we build feature X?”, “How should we position this?”, “Write a landing page hero.”
-
-1. Read:
-   - `business/vision.md`
-   - `business/personas.md`
-   - `business/value-prop.md`
-   - `business/strategy.md`
-   - `product/features.md`
-   - `brand/voice.md`
-2. Use IDs from personas and features to stay consistent across outputs.
-3. If the request implies a **change in strategy, personas, or value props**, propose and/or apply updates to the relevant `business/*` files.
-
-### 4.2 Feature & UX tasks
-
-Examples: “Add a team invites feature”, “Design the onboarding flow”, “Write empty state copy.”
-
-1. Read:
-   - `operations/cycles/active.md` (to check whether this task fits the current cycle).
-   - `product/features.md` and `product/use-cases.md` (for relevant features).
-   - `product/ux-principles.md`.
-   - `brand/voice.md`.
-2. If the requested feature does not yet exist in `product/features.md`:
-   - Propose a new feature entry with an ID and full spec.
-   - Ask the human whether to add it; if yes, update the file.
-
-### 4.3 Coding & architecture tasks
-
-Examples: “Implement server action X”, “Refactor module Y”, “Introduce background jobs.”
-
-1. Read:
-   - `tech/architecture.md`
-   - `tech/domain-model.md`
-   - `tech/data-model.md`
-   - `development/conventions.md`
-   - `development/constraints.md`
-   - Any relevant `development/decisions/*.md`
-2. Before introducing new libraries, patterns, or services:
-   - Check `development/constraints.md` and `operations/providers.md`.
-   - If a new provider or major change is needed, propose updates to those files.
-
-### 4.4 Data & schema tasks
-
-Examples: “Add a new column to users”, “Design table for invoices.”
-
-1. Read:
-   - `tech/data-model.md`
-   - `tech/domain-model.md`
-   - Any recent `development/decisions/*` about data or storage.
-2. Ensure that:
-   - You do not contradict existing entities and relationships.
-   - Any new entities/fields are added back into `tech/data-model.md` with updated `last_updated`.
-
-### 4.5 Operations & cycles tasks
-
-Examples: “What are we currently working on?”, “Plan the next cycle”, “Summarize the last deploy.”
-
-1. Read:
-   - `operations/cycles/active.md`
-   - `operations/cycles/backlog.md`
-   - `operations/deploy-log.md`
-   - `operations/providers.md`
-   - `operations/observability.md`
-2. For planning:
-   - Propose a plan that:
-     - References backlog items by ID.
-     - Fits within the current strategic priorities.
-   - Update `operations/cycles/active.md` to match the chosen plan (if allowed).
-
-3. While working:
-   - Keep `operations/cycles/active.md` updated in near‑real time:
-     - Mark items as in progress/done (e.g., checklist or status list).
-     - Link PRs/branches/commits for traceability.
-     - Record any scope changes and decisions (briefly; link to ADRs if needed).
-     - Update `last_updated` in front‑matter on meaningful changes.
-   - On deploy/milestone:
-     - Create a dated snapshot `operations/cycles/YYYYMMDD.md` summarizing what shipped and learnings.
-     - Reset or update `operations/cycles/active.md` for the next objective.
-
-### 4.6 Content & marketing tasks
-
-Examples: “Write a LinkedIn post announcing the new feature”, “Draft onboarding emails.”
-
-1. Read:
-   - `business/value-prop.md`
-   - `business/personas.md`
-   - `product/features.md` (especially the feature just shipped).
-   - `brand/voice.md`
-   - `brand/channels.md`
-2. Adapt content to the target persona and channel, respecting all brand constraints.
+| Task Type | Agent File | Examples |
+| :--- | :--- | :--- |
+| **Business & Product** | `agents/business-agent.md` | “Should we build X?”, “Positioning strategy” |
+| **Feature & UX** | `agents/feature-agent.md` | “Add team invites”, “Design onboarding” |
+| **Coding & Architecture** | `agents/coding-agent.md` | “Implement server action”, “Refactor module” |
+| **Data & Schema** | `agents/data-agent.md` | “Add column”, “Design table” |
+| **Operations & Cycles** | `agents/operations-agent.md` | “Plan cycle”, “Deploy summary” |
+| **Content & Marketing** | `agents/content-agent.md` | “Write post”, “Draft email” |
+| **Context Stewardship** | `agents/context-steward.md` | Keeping context in sync with code |
 
 ---
 
@@ -207,48 +125,7 @@ Update relevant `/context` files when:
 
 **Never** fabricate business decisions or factual context that the user has not implied or code does not support. When in doubt, ask.
 
----
 
-## 6. Specialized agent roles
-
-You may be configured as a specific role. When so, in addition to the general protocol above, follow the instructions in the corresponding `/context/agents/*.md` file.
-
-### 6.1 Coding agent
-
-- Primary focus: code, tests, refactors, and dev tooling.
-- Before coding:
-  - Read `agents/coding-agent.md`.
-  - Read the relevant tech, development, and operations sections as described in that file.
-- While coding:
-  - Adhere to `development/conventions.md` and `development/constraints.md`.
-  - Keep `tech/data-model.md` and `tech/domain-model.md` in sync with schema/logic changes.
-
-### 6.2 Content agent
-
-- Primary focus: marketing, documentation, in-app copy, emails.
-- Before writing:
-  - Read `agents/content-agent.md`.
-  - Read business, product, and brand context as instructed there.
-- Always adapt content by persona ID and channel rules.
-
-### 6.3 Operations agent
-
-- Primary focus: deployment, monitoring, incident handling, operations insights.
-- Before acting:
-  - Read `agents/operations-agent.md`.
-  - Read `operations/*` and relevant provider docs.
-- When proposing changes:
-  - Make sure they are consistent with architecture and constraints.
-
-### 6.4 Context Steward / Gardener agent
-
-- Primary focus: **keeping `/context` aligned with code and operations**.
-- Protocol (details in `agents/context-steward.md`):
-  - Periodically or per PR:
-    - Read `git diff` or list of changed files.
-    - Determine which `/context` files should reflect these changes.
-    - Propose or apply updates with minimal diffs.
-  - Prefer marking uncertain updates as `status: draft` rather than guessing.
 
 ---
 
