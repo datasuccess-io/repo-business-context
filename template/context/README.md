@@ -1,4 +1,18 @@
-# Repo Business Context
+---
+status: active
+version: 1.0
+last_updated: 2026-02-09
+category: documentation
+tags: readme, context, introduction, docs, onboarding
+license: MIT
+author:
+  name: Igor Souza
+  email: igor@datasuccess.io
+  github: /issouza
+  linkedin: /in/igorsansouza
+---
+
+**Repo Business Context**
 
 > A small, opinionated, AI‑first context layer that lives inside your repo and unifies business, product, tech, brand, and operations for both humans and agents.
 
@@ -6,14 +20,15 @@
 
 ## 1. What is the Repo Business Context?
 
-The **Repo Business Context (RBC)** is a convention for organizing Markdown files inside your code repository under `/context`. These files describe:
+The **Repo Business Context (RBC)** is a convention for organizing Markdown files inside your code repository under `/context`.
 
-- **Why** the product exists (business, personas, strategy).
-- **What** is being built (features, flows, roadmap).
-- **How** it works (architecture, domain model, data model, development practices).
-- **How** it runs (providers, infrastructure, observability, cycles).
-- **How** it should talk (brand voice, copy rules).
-- **How agents should behave** (AGENTS.md and `/context/agents/*`).
+These files bring to the repository the context that is often scattered across Notion, Confluence, Slack, or just in the founder’s head. By putting it in the repo:
+
+- Why the product exists (business, personas, strategy).
+- What is being built (features, flows, roadmap).
+- How it works (architecture, domain model, data model, development practices).
+- Where it runs (providers, infrastructure, observability, cycles).
+- Who it should talk to (brand voice, copy rules).
 
 Key properties:
 
@@ -34,11 +49,12 @@ RBC is optimized for:
 - **Solo founders / solopreneurs who are also the developers.**
 - Very **small teams** (1–3 people) working primarily inside **one repository**.
 - Workflows where **AI agents (in IDE, CLI, CI, etc.) are core collaborators**, not optional helpers.
+- Projects with no external documentation (e.g. Notion, Confluence).
+- Businesses where the code is developed before the business model is fully defined.
 
 It is **not** designed for:
 
 - Large organizations with many repos and heavy tools (Jira, Confluence, multi‑service monorepos).
-- Projects where product direction changes chaotically every few days and you rarely revisit decisions.
 - “Throwaway” prototypes or scripts.
 
 You _can_ adapt the ideas to larger setups, but this template assumes:
@@ -50,7 +66,7 @@ You _can_ adapt the ideas to larger setups, but this template assumes:
 
 ## 3. Problems the Repo Business Context solves
 
-### 3.1 Context fragmentation
+### 3.1. Context fragmentation
 
 Today, key knowledge is scattered:
 
@@ -63,7 +79,7 @@ AI tools embedded in the IDE or CI **cannot see** most of this. They only see co
 
 RBC fixes this by putting **all critical context in one small, structured, AI‑readable corpus** inside the repo.
 
-### 3.2 AI without intent
+### 3.2. AI without intent
 
 LLMs are good at code patterns, but they don’t know:
 
@@ -72,412 +88,226 @@ LLMs are good at code patterns, but they don’t know:
 - Which trade‑offs (speed vs quality, cost vs UX) you care about.
 - What tech or providers they must avoid.
 
-RBC makes the **intent explicit** so agents can align code, copy, and operations decisions with your business.
+RBC makes the **intent explicit** so agents can align code, copy, and decisions with your business.
 
-### 3.3 Re‑explaining everything in every chat
+### 3.3. Re‑explaining business in every chat
 
 Without RBC, every new AI session starts with:
 
-> “Here’s what my app does…”  
-> “Here’s my stack…”  
-> “We don’t use Redux…”  
+> “Here’s my ICP…”  
 > “Our pricing is…”
+> "The feature that differentiates us is…"
+> "Here are our brand voice rules…"
 
 RBC lets you say instead:
 
-> “Read `/context` and summarize my project back to me.”  
-> “Propose the next cycle based on `/context/operations/cycles/active.md`.”
+> “Create a pricing page and configure the Stripe integration accordingly.”  
+> “Write a new feature spec for a referral program.”
+> “Optimize the onboarding flow for our ICP with our brand voice.”
+
+### 3.4. Power without purpose (Executional agents)
+
+Modern agents can now execute actions directly: running SQL queries, charging cards via Stripe, or deploying infra. But without context, these capabilities are dangerous.
+
+An agent without business context might:
+
+- **Optimize the wrong metric** (e.g., delete "inactive" users who are actually on legal hold).
+- **Misinterpret rules** (e.g., issue refunds that violate your TOS).
+- **Drift off-brand** (e.g., post social copy that damages trust).
+
+RBC provides the **guardrails and intent** so powerful agents become safe, effective team members rather than loose cannons.
+
+### 3.5. The "Code First" blind spot
+
+Technical solopreneurs often excel at engineering but may overlook business essentials like audience segmentation, brand voice, or revenue modeling. This leads to well-written code for a product nobody wants or understands.
+
+RBC forces these "soft" concerns into the repo as **first-class citizens** (files like `business/personas.md` and `brand/voice.md`). This structure prompts you to define _who_ and _why_ before you get lost in the _how_, ensuring your dev skills serve a viable business.
 
 ---
 
 ## 4. Core design principles
 
-1. **Canonical over complete**  
-   `/context` stores **canonical decisions and definitions**, not every note or brainstorm. Treat it like source code for your product’s intent.
+1. **Canonical over complete**
+   - Store **canonical decisions and definitions**, not every note or task.
+   - Treat it like source code for your product’s intent.
+   - Focus on the 20% of context that gives 80% of the value.
+   - Less is more. A few well‑maintained files are more powerful than a sprawling wiki of half‑written docs.
 
-2. **AI‑first structure**  
-   Files are written to be easy for LLMs:
-   - Clear headings and sections.
-   - Consistent patterns across files.
-   - Short, focused documents (ideally < 500–800 lines).
-   - Simple lists and tables over prose walls.
+2. **AI‑first writting**
+   - Create short, focused documents.
+   - Use consistent patterns and headings across files.
+   - Prefer simple lists and tables over prose walls.
+   - State constraints and rules explicitly.
+   - Avoid unexplained acronyms or jargon.
 
-3. **Minimal, standardized metadata (YAML front‑matter)**  
-   Every context file starts with the same small schema:
+3. **AI collaboration and capabilites**
+   - Extract the most of the latest AI capabilities
+   - Give AI power and information enough so they can be true collaborators, not just autocomplete.
+   - MCP tools to take actions outside of the repo.
+   - `AGENTS.md` to instruct AI tools on how to use the context and
+   - Skills to automate context maintenance and extract the most of it.
+   - Github Actions to enforce context updates and consistency.
+
+4. **Minimal, standardized metadata (YAML front‑matter)**  
+   Every context file starts with this same schema:
 
    ```yaml
    ---
-   context_type: business | persona | strategy | feature | use_case | architecture | domain_model | data_model | convention | constraint | decision | operations | cycle | provider | brand | agent | runbook | workflow
    status: draft | active | deprecated
    last_updated: YYYY-MM-DD
+   category: brand | business | product | skill | tech
+   tags: tag1, tag2, ...
    ---
    ```
 
-   - `context_type` — what kind of document this is.
-   - `status` — whether the content is authoritative (`active`), in progress (`draft`), or obsolete (`deprecated`).
-   - `last_updated` — ISO date; update whenever the content meaningfully changes.
+   - `status` — whether the content is authoritative (`active`),in progress (`draft`), or outdated but historically useful (`deprecated`).
+   - `last_updated` — update whenever the content meaningfully changes.
+   - `category` — what kind of document this is, corresponds to root-level context folders.
+   - `tags` - as you evolve your context, you can add tags to summarize the topics covered, which can be useful for search and agent retrieval.
 
-   You may add **extra fields** where helpful (e.g. `cycle_id`, `tags`, `version`), but these three are the standard fields across all `/context` files.
-
-4. **Living with the code**  
-   A feature isn’t fully “done” until its relevant `/context` docs are updated. Commit code and context together.
-
-5. **Link, don’t duplicate**  
-   If more detail lives in external tools (Figma, analytics, dashboards), link out from `/context` instead of copying large dumps.
-
-6. **Separation of concerns**  
-   The folder layout separates “why” (business/product) from “how it works” (tech/development) and “how it runs” (operations).
+   You may add **extra fields**, but these three are the standard fields across all `/context` files.
 
 ---
 
 ## 5. Directory structure
 
-Recommended structure under the repo root:
+The `/context` folder contains small, focused Markdown files organized by concern.
+
+Token limits are a key constraint for LLMs. Smaller, focused files help you stay within those limits while providing rich context.
+
+For humans, this structure also makes it easier to find and update the relevant context when making changes.
+
+You may adapt it to your needs, but here is the recommended structure:
 
 ```text
-AGENTS.md                    # Root instructions for all AI agents (see below)
-
 /context
-├── README.md                # This file – explains the concept & structure
-├── CONTEXT.md               # Map of files + routing guide for agents
+├── AGENTS.md                   # Root instructions for all AI agents
+├── README.md                   # This file – explains RBC concept & structure
 │
-├── brand/                   # The “How it talks” – communication
-│   ├── voice.md             # Name, slogan, tone, do/don’t rules
-│   ├── assets.md            # Logo usage, colors, references to asset locations
-│   └── channels.md          # Channels (e.g. website, email, social) & per-channel nuances
-|
-├── business/                # The “Why” – business model and strategy
-│   ├── vision.md            # Problem, mission, positioning, boundaries
-│   ├── revenue-model.md     # Pricing, plans, unit economics assumptions
-│   ├── personas.md          # ICPs, jobs-to-be-done, pain points (with IDs)
-│   ├── strategy.md          # Phases, priorities, out-of-scope items
-│   └── value-prop.md        # Core value propositions and messaging pillars
-|
-├── tech/                    # The “How (logical)” – system & domain
-│   ├── architecture.md      # System architecture, components, data flow
-│   ├── domain-model.md      # Core domain concepts and business rules
-│   └── data-model.md        # Entities, relationships, key schemas
+├── brand/
+│   ├── voice.md                # Name, slogan, tone, do/don’t rules
+│   ├── assets.md               # Logo usage, colors, references to asset locations
+│   └── channels.md             # Channels (e.g. website, email, social) & per-channel nuances
 │
-├── product/                 # The “What” – user-visible product
-│   ├── roadmap.md           # Near / mid / long-term roadmap
-│   ├── features.md          # Living spec of shipped & planned features
-│   ├── use-cases.md         # Key use cases and user stories
-│   ├── ux-principles.md     # UX patterns, interaction rules, content UX
-│   └── integrations.md      # External product integrations and rules
+├── business/
+│   ├── vision.md               # Problem, mission, positioning, boundaries
+│   ├── revenue-model.md        # Pricing, plans, unit economics assumptions
+│   ├── personas.md             # ICPs, jobs-to-be-done, pain points
+│   ├── strategy.md             # Phases, priorities, out-of-scope items
+│   ├── domain-model.md         # Core domain concepts and business rules
+│   └── value-prop.md           # Core value propositions and messaging pillars
 │
-├── development/             # The “How (development)” – how you build
-│   ├── constraints.md       # Libraries / patterns to avoid; non-functional constraints
-│   ├── conventions.md       # Code style, patterns, folder structure
-│   ├── workflows.md         # Local dev, branching model, CI overview
-│   └── decisions.md         # Short ADR-like decision notes
+├── product/
+│   ├── roadmap.md              # Near / mid / long-term roadmap
+│   ├── backlog.md              # Ordered list of candidate work items
+│   ├── brainstorm.md           # Unfiltered ideas, notes, and experiments
+│   ├── features.md             # Living spec of shipped & planned features
+│   ├── use-cases.md            # Key use cases and user stories
+│   ├── ux-principles.md        # UX patterns, interaction rules, content UX
+│   └── integrations.md         # External product integrations and rules
 │
-├── operations/              # The “How it runs” – operations & cycles
-│   ├── providers.md         # SaaS, infra, AI tools, where credentials live (no secrets)
-│   ├── observability.md     # Logging, metrics, monitoring, analytics
-│   ├── runbook.md           # Incident handling, manual operational tasks
-│   └── cycles/              # Build/ship cycles (formerly “sprints”)
-│       ├── active.md        # Current focus – single most important file while building
-│       └── backlog.md       # Ordered list of candidate work items
-|
-└── agents/                  # Agent-specific context
-    ├── coding-agent.md      # How coding agents should behave & which docs to use
-    ├── content-agent.md     # How content/copy agents should behave
-    ├── operations-agent.md  # How ops/monitoring agents should behave
-    ├── context-steward.md   # “Gardener” agent for keeping /context fresh
-    └── capabilities.md      # Available AI tools, MCP servers, and agent platforms
+├── skills/
+│   └── repo-business-context/
+│       └── SKILL.md            # Metadata for GitHub Skills Marketplace
+│
+└── tech/
+    ├── architecture.md         # System architecture, components, data flow
+    ├── data-model.md           # Entities, relationships, key schemas
+    ├── conventions.md          # Libraries, patterns, constrains
+    ├── providers.md            # SaaS, infra, tools, where credentials live
+    ├── observability.md        # Logging, metrics, monitoring, analytics
+    └── decisions.md            # Short ADR-like decision notes
 ```
 
 You don’t have to create or fill every file immediately. Start small (see §10) and grow as needed.
 
 ---
 
-## 6. The cycles model (Continuous Flow instead of Scrum)
+## 6. Deploys, not sprints
 
-Traditional sprints are designed for teams and calendars. For a solo founder + AI agents, the real rhythm is:
+Repo Business Context is **development-driven**, not documentation or sprint driven.
+Traditional models are designed for teams and calendars. For a solo founder + AI agents, the real rhythm is:
 
-> Idea → Chat → Code → Deploy → Learn → Repeat
+> Idea → Chat → Code → Deploy → Repeat
 
-RBC reflects this with **cycles**:
+It's normal to have multiple commits and deploys per day, and the product can evolve in a pace much faster than documenting and planning things ahead of time allows.
 
-- **`operations/cycles/active.md`**
-  - The “now” file. It defines the current objective, links to relevant context, and outlines a short plan.
-  - Agents should read this first when asked “what are we working on?”.
+RBC enriches this experience by bringing additional business context to the repository itself, so AI and developers have everything they need to make informed decisions and keep the code aligned with the business goals, without needing to switch tools.
 
-- **`operations/cycles/backlog.md`**
-  - Ordered list of ideas, bugs, refactors, and improvements.
-  - Each item can reference context by IDs (persona IDs, feature IDs, etc.).
+The main documentation of product evolution are **Commit messages** and the **Pull Requests** themselves, not task lists, sprint or planning docs.
 
-- **`operations/cycles/YYYYMMDD.md`**
-  - Created _after_ a significant deploy or milestone.
-  - Snapshot of what changed, why, and any learnings.
-  - Links to updated `/context` docs and to the relevant git commits.
+Automations help manage and standardize these processes, granting useful and updated files.
 
-Cycles are **deploy-driven**, not calendar-driven. You can finish multiple small cycles per day or one larger cycle per week, depending on your pace.
+The context should evolve with the code, not be a separate artifact that lags behind.
 
 ---
 
-## 7. Writing conventions (for both humans and agents)
+## 7. Keeping the Repo Business Context up to date
 
-### 7.1 YAML front‑matter
+The biggest RBC risk is **stale docs**. The payoff only exists if the context remains close to reality.
 
-Every `/context` file starts with:
+As stated above, the context files are not to describe what is already told in the code, but to provide the business and product rationale, the "why" behind the code.
 
-```yaml
----
-context_type: feature
-status: active
-last_updated: 2026-01-12
----
-```
+This means that **not every code change requires a context update**. If you refactor a function or fix a bug, you likely don’t changed business' characteristics.
 
-Guidelines:
+But if you add a relevant feature, make a significant tech decision, or change your pricing, you should update the relevant context files to reflect the new reality and rationale.
 
-- Keep `context_type` consistent. Reuse the same values across files.
-- Use `status: draft` for new or uncertain documents.
-- When something is no longer true but still historically useful, set `status: deprecated` and mention where to look instead.
-- Always update `last_updated` when the **meaning** of the file changes, not for trivial edits.
+### 7.1. Included automations
 
-### 7.2 One concern per file
+This template includes a set of GitHub Actions and scripts to keep the context healthy and the workflow smooth:
 
-Each file should have a clear single responsibility:
+1. **Context Steward** (`.github/workflows/context-steward.yml`)
+   - Checks if changes in `src/` are accompanied by updates in `/context`.
+   - Warns in the PR if context drift is detected, reminding you to keep docs in sync.
 
-- `vision.md` – high-level business vision, not detailed features.
-- `features.md` – feature list, not roadmapping process.
-- `data-model.md` – canonical data entities, not DB migration history.
+2. **Commitlint** (`.github/workflows/commitlint.yml`)
+   - Enforces [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat:`, `fix:`, `docs:`).
+   - Ensures commit history is structured for automated release notes and changelogs.
 
-If a file grows too long or mixed, split it.
+3. **Release Drafter** (`.github/workflows/release-drafter.yml`)
+   - Automatically drafts release notes based on merged PRs and labels.
+   - Categorizes changes (Features, Bug Fixes, Maintenance) so you don't have to write changelogs manually.
 
-### 7.3 Consistent headings & IDs
+4. **PR Template & Labels**
+   - `PULL_REQUEST_TEMPLATE.md` includes a checklist to verify context updates.
+   - `labels.yml` syncs a standard set of labels for categorizing PRs and issues.
 
-Use repeatable patterns so agents can rely on structure.
-
-**Example: feature entry in `product/features.md`:**
-
-```markdown
----
-context_type: feature
-status: active
-last_updated: 2026-01-12
----
-
-# Feature: Smart Onboarding Checklist
-
-id: feat_smart_onboarding_checklist
-
-## Summary
-
-Short description of what this feature does and why it exists.
-
-## Target personas
-
-- persona_id: founder_early_saas
-
-## Business goal
-
-- Increase activation rate from X% to Y% within N days.
-
-## Status
-
-- shipped
-
-## Dependencies
-
-- domain entities: Workspace, User, ChecklistTemplate
-- tech: onboarding flow in `architecture.md`
-```
-
-**Example: persona entry in `business/personas.md`:**
-
-```markdown
----
-context_type: persona
-status: active
-last_updated: 2026-01-12
----
-
-## Persona: Early SaaS Founder
-
-id: founder_early_saas
-
-### Summary
-
-Solo or tiny-team founder building first SaaS product.
-
-### Goals
-
-- Launch MVP quickly.
-- Validate willingness to pay.
-- Minimize time spent on infra and operations.
-
-### Pain points
-
-- Overwhelm from tool choices.
-- Limited time to learn every framework.
-- Needs AI assistance but fears vendor lock-in.
-```
-
-Then other docs reference `founder_early_saas` or `feat_smart_onboarding_checklist` by ID.
-
-### 7.4 Current vs future
-
-Clearly distinguish:
-
-```markdown
-## Current capabilities (as of 2026-01-12)
-
-- ...
-
-## Planned (not yet built)
-
-- ...
-```
-
-Agents should treat “Planned” as **ideas, not reality**.
-
-### 7.5 Negative constraints
-
-Be explicit about what **must not** happen; this is extremely helpful for AI:
-
-- In `development/constraints.md`:
-  - “Do NOT introduce Redux; use React Context + custom hooks.”
-  - “Do NOT store PII in analytics events.”
-
-- In `tech/architecture.md`:
-  - “We will not build a native mobile app in v1; web only.”
-
-- In `brand/voice.md`:
-  - “Never call users ‘rockstars’; that word is off-brand.”
+Feel free to disable or modify these workflows in `.github/` if they don't fit your process.
 
 ---
 
-## 8. Interacting with AGENTS and AI tools
+## 8. Getting started in a new project
 
-### 8.1 AGENTS.md at the repo root
+You can adopt the Repo Business Context at any point: on a new repo, an existing one - even retroactively.
 
-`AGENTS.md` is the **entry point** for any agent (IDE assistant, CI bot, custom tool). It tells agents:
+The earlier you start, the more it can shape your development in a positive way.
 
-- Always read `/context/CONTEXT.md` to understand the map.
-- How to route tasks to relevant `/context` files.
-- How to respect `context_type`, `status`, and `last_updated`.
-- How and when to propose or apply updates to `/context`.
+### 8.1. Structure
 
-(See `./AGENTS.md` in this template.)
+Use the `template/` folder and files structure as a starting point.
 
-### 8.2 Agent‑specific context in `/context/agents/`
+With them in place, AI agents can immediately start using the context to help you build and implement RBC.
 
-Use these files to configure different **roles**:
+> Caution to not substitute existing files with the template ones, like `.github/`, `AGENTS.md`, or `README.md`. You can merge their content manually if needed.
 
-- `coding-agent.md` – where to look for stack decisions, constraints, and data model.
-- `content-agent.md` – where to look for value props, personas, and brand rules.
-- `operations-agent.md` – where to look for providers, observability, and runbook.
-- `context-steward.md` – how to scan diffs and `/context` to propose doc updates.
-- `capabilities.md` – description of available AI capabilities:
-  - IDE tools (Cursor, Windsurf, Copilot, etc.).
-  - MCP servers and tools (e.g., for querying DB, logs, analytics).
-  - Any scripts or CLIs agents can invoke.
+### 8.2. Fill out context files
 
-The template does not assume a specific agent framework. You can adapt these files to MCP, custom toolchains, or other platforms.
+Fill out the RBC files according to your project and needs, then:
 
----
+- Manually fill out: gradually grow and structure the key information into the RBC format.
+- Use text files or AI chat as a starting point: use AI agents to help you extract and structure the content into the RBC format.
 
-## 9. Keeping the Repo Business Context up to date
+### 8.3. Validate
 
-The biggest risk is **stale docs**. The payoff only exists if the context remains close to reality.
+Ask your IDE agent:
 
-### 9.1 Simple working rule
+> “Read `/context` and summarize my project back to me.”
 
-> **No feature or significant change is done until the relevant `/context` files are updated.**
-
-When you:
-
-- Add or significantly change a feature → update `product/features.md` and `product/roadmap.md`.
-- Change domain logic or data structures → update `tech/domain-model.md` and/or `tech/data-model.md`.
-- Change pricing or positioning → update `business/revenue-model.md` and `business/value-prop.md`.
-- Add or change providers/infrastructure → update `operations/providers.md` and `operations/observability.md`.
-- Finish a meaningful deploy → update `operations/deploy-log.md` and create/update a cycle file.
-
-### 9.2 Recommended (optional) automations
-
-These are **recommended patterns**, not required for the template:
-
-1. **PR checklist**  
-   Add `.github/pull_request_template.md` with something like:
-
-   ```markdown
-   - [ ] I have considered whether `/context` needs an update.
-   - [ ] If user-visible behavior changed, I updated:
-     - [ ] `/context/product/features.md`
-     - [ ] `/context/tech/domain-model.md` or `/context/tech/data-model.md` if needed.
-   ```
-
-2. **Context drift warning Action**  
-   A GitHub Action that warns (but doesn’t block) when `src/` changes but `/context` doesn’t.
-
-3. **Context Steward / Gardener agent**  
-   A script or workflow that:
-   - Reads recent `git diff`.
-   - Looks at relevant `/context` files.
-   - Proposes updates (or opens a PR) when it detects mismatches.
-
-Document these in `development/workflows.md` and `operations/runbook.md` as they evolve.
+If it can accurately describe your product, personas, stack, and constraints, you’re ready to start building with more business context-aware agents!
 
 ---
 
-## 10. Getting started in a new project
-
-For a new repo:
-
-1. **Create the basic structure**
-   - Add `/context` and copy this template’s files.
-   - Add `AGENTS.md` at the repo root.
-
-2. **Fill the minimal core**
-
-   At minimum, complete:
-   - `brand/voice.md` — how your product should speak.
-   - `business/vision.md` — what you’re building, for whom, and what is out of scope.
-   - `business/personas.md` — 1–3 key personas with IDs.
-   - `product/features.md` — 3–5 initial features with IDs.
-   - `tech/architecture.md` — brief description of your stack and architecture.
-   - `operations/cycles/active.md` — your current objective.
-
-3. **Hook your IDE agents to `AGENTS.md`**
-   - In Cursor, Windsurf, Copilot Workspace or similar tools, configure them so that:
-     - `AGENTS.md` is automatically loaded or preferred.
-     - File search includes `/context` aggressively.
-   - If your IDE allows nested `AGENTS.md` (e.g. inside `/context`), you can move or duplicate it there as well.
-     - This allow you to have two levels of agent instructions: repo-wide (root) and context-specific.
-
-4. **Validate**
-
-   Ask your IDE agent:
-
-   > “Read `/context` and summarize my project back to me.”
-
-   If it can accurately describe your product, personas, stack, and constraints, you’re ready to build.
-
----
-
-## 11. What belongs _outside_ `/context`
-
-To keep `/context` clean:
-
-- Do **not** store:
-  - Raw meeting notes or unfiltered brainstorms.
-  - Long chat transcripts.
-  - Full log or analytics exports.
-  - Binary design assets (images, Figma exports, etc.).
-
-These can live in:
-
-- `/notes` or `/docs/notes` inside the repo.
-- External tools (Notion, Figma, etc.), linked from `/context`.
-
-`/context` is only for **canonical, curated knowledge**.
-
----
-
-## 12. Summary
+## 9. Summary
 
 The Repo Business Context turns your repo into a **living, AI‑first knowledge base** that encodes:
 
@@ -486,6 +316,6 @@ The Repo Business Context turns your repo into a **living, AI‑first knowledge 
 - The brand and communication style you want.
 - The rules and workflows agents should follow.
 
-For a solo founder working closely with AI, this becomes the **world model** from which all code, copy, and operations decisions are derived.
+For a technical solopreneur working closely with AI, this becomes the **world model** that bridges the gap between code and business value. It provides the necessary intent and guardrails to turn powerful, executional agents into safe collaborators rather than risky tools.
 
-Treat `/context` like source code. Keep it small, structured, and up to date, and your agents will feel far more like collaborators than autocomplete.
+Treat `/context` like source code. Keep it small, structured, and up to date, and your agents will stop guessing and start delivering.
