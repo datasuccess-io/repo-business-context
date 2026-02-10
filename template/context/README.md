@@ -1,7 +1,7 @@
 ---
 status: active
-version: 1.0
-last_updated: 2026-02-09
+version: 1.1
+last_updated: 2026-02-10
 category: documentation
 tags: readme, context, introduction, docs, onboarding
 license: MIT
@@ -187,6 +187,7 @@ You may adapt it to your needs, but here is the recommended structure:
 ├── brand/
 │   ├── voice.md                # Name, slogan, tone, do/don’t rules
 │   ├── assets.md               # Logo usage, colors, references to asset locations
+│   ├── ux-principles.md        # User experience, emotions, and design guidelines
 │   └── channels.md             # Channels (e.g. website, email, social) & per-channel nuances
 │
 ├── business/
@@ -200,10 +201,8 @@ You may adapt it to your needs, but here is the recommended structure:
 ├── product/
 │   ├── roadmap.md              # Near / mid / long-term roadmap
 │   ├── backlog.md              # Ordered list of candidate work items
-│   ├── brainstorm.md           # Unfiltered ideas, notes, and experiments
 │   ├── features.md             # Living spec of shipped & planned features
 │   ├── use-cases.md            # Key use cases and user stories
-│   ├── ux-principles.md        # UX patterns, interaction rules, content UX
 │   └── integrations.md         # External product integrations and rules
 │
 ├── skills/
@@ -215,8 +214,7 @@ You may adapt it to your needs, but here is the recommended structure:
     ├── data-model.md           # Entities, relationships, key schemas
     ├── conventions.md          # Libraries, patterns, constrains
     ├── providers.md            # SaaS, infra, tools, where credentials live
-    ├── observability.md        # Logging, metrics, monitoring, analytics
-    └── decisions.md            # Short ADR-like decision notes
+    └── observability.md        # Logging, metrics, monitoring, analytics
 ```
 
 You don’t have to create or fill every file immediately. Start small (see §10) and grow as needed.
