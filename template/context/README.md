@@ -1,6 +1,5 @@
 ---
 status: active
-version: 1.1
 last_updated: 2026-02-10
 category: documentation
 tags: readme, context, introduction, docs, onboarding
@@ -18,7 +17,7 @@ author:
 
 ---
 
-## 1. What is the Repo Business Context?
+# 1. What is the Repo Business Context?
 
 The **Repo Business Context (RBC)** is a convention for organizing Markdown files inside your code repository under `/context`.
 
@@ -42,7 +41,7 @@ This is _not_ a runtime framework or library. It is a **living specification and
 
 ---
 
-## 2. Who is this for?
+# 2. Who is this for?
 
 RBC is optimized for:
 
@@ -64,9 +63,9 @@ You _can_ adapt the ideas to larger setups, but this template assumes:
 
 ---
 
-## 3. Problems the Repo Business Context solves
+# 3. Problems the Repo Business Context solves
 
-### 3.1. Context fragmentation
+## 3.1. Context fragmentation
 
 Today, key knowledge is scattered:
 
@@ -79,7 +78,7 @@ AI tools embedded in the IDE or CI **cannot see** most of this. They only see co
 
 RBC fixes this by putting **all critical context in one small, structured, AI‑readable corpus** inside the repo.
 
-### 3.2. AI without intent
+## 3.2. AI without intent
 
 LLMs are good at code patterns, but they don’t know:
 
@@ -90,7 +89,7 @@ LLMs are good at code patterns, but they don’t know:
 
 RBC makes the **intent explicit** so agents can align code, copy, and decisions with your business.
 
-### 3.3. Re‑explaining business in every chat
+## 3.3. Re‑explaining business in every chat
 
 Without RBC, every new AI session starts with:
 
@@ -105,7 +104,7 @@ RBC lets you say instead:
 > “Write a new feature spec for a referral program.”
 > “Optimize the onboarding flow for our ICP with our brand voice.”
 
-### 3.4. Power without purpose (Executional agents)
+## 3.4. Power without purpose (Executional agents)
 
 Modern agents can now execute actions directly: running SQL queries, charging cards via Stripe, or deploying infra. But without context, these capabilities are dangerous.
 
@@ -117,7 +116,7 @@ An agent without business context might:
 
 RBC provides the **guardrails and intent** so powerful agents become safe, effective team members rather than loose cannons.
 
-### 3.5. The "Code First" blind spot
+## 3.5. The "Code First" blind spot
 
 Technical solopreneurs often excel at engineering but may overlook business essentials like audience segmentation, brand voice, or revenue modeling. This leads to well-written code for a product nobody wants or understands.
 
@@ -125,7 +124,7 @@ RBC forces these "soft" concerns into the repo as **first-class citizens** (file
 
 ---
 
-## 4. Core design principles
+# 4. Core design principles
 
 1. **Canonical over complete**
    - Store **canonical decisions and definitions**, not every note or task.
@@ -169,7 +168,41 @@ RBC forces these "soft" concerns into the repo as **first-class citizens** (file
 
 ---
 
-## 5. Directory structure
+# 5. Keeping the Repo Business Context up to date
+
+The biggest RBC risk is **stale docs**. The payoff only exists if the context remains close to reality.
+
+As stated above, the context files are not to describe what is already told in the code, but to provide the business and product rationale, the "why" behind the code.
+
+This means that **not every code change requires a context update**. If you refactor a function or fix a bug, you likely don’t changed business' characteristics.
+
+But if you add a relevant feature, make a significant tech decision, or change your pricing, you should update the relevant context files to reflect the new reality and rationale.
+
+## 5.1. Automations
+
+This template includes a set of GitHub Actions and scripts to keep the context healthy and the workflow smooth:
+
+1. **Context Steward** (`.github/workflows/context-steward.yml`)
+   - Checks if changes in `src/` are accompanied by updates in `/context`.
+   - Warns in the PR if context drift is detected, reminding you to keep docs in sync.
+
+2. **Commitlint** (`.github/workflows/commitlint.yml`)
+   - Enforces [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat:`, `fix:`, `docs:`).
+   - Ensures commit history is structured for automated release notes and changelogs.
+
+3. **Release Drafter** (`.github/workflows/release-drafter.yml`)
+   - Automatically drafts release notes based on merged PRs and labels.
+   - Categorizes changes (Features, Bug Fixes, Maintenance) so you don't have to write changelogs manually.
+
+4. **PR Template & Labels**
+   - `PULL_REQUEST_TEMPLATE.md` includes a checklist to verify context updates.
+   - `labels.yml` syncs a standard set of labels for categorizing PRs and issues.
+
+Feel free to disable or modify these workflows in `.github/` if they don't fit your process.
+
+---
+
+# 6. Directory structure
 
 The `/context` folder contains small, focused Markdown files organized by concern.
 
@@ -177,7 +210,20 @@ Token limits are a key constraint for LLMs. Smaller, focused files help you stay
 
 For humans, this structure also makes it easier to find and update the relevant context when making changes.
 
-You may adapt it to your needs, but here is the recommended structure:
+You don’t have to create or fill every file immediately, neither use the exact structure below. Start small and grow as needed.
+
+## 6.1. Minimum suggested structure:
+
+This is an opinionated starting point for how to organize your context files. You can start with just a few of these and grow over time as your project evolves.
+
+```text
+/context
+
+```
+
+## 6.2. Expanded structure example:
+
+This is a more fleshed-out example of how you might structure the `/context` folder as your project evolves. You don't need to have all these files from the start, but this gives you an idea of how to organize different aspects of your business and product context.
 
 ```text
 /context
@@ -217,11 +263,9 @@ You may adapt it to your needs, but here is the recommended structure:
     └── observability.md        # Logging, metrics, monitoring, analytics
 ```
 
-You don’t have to create or fill every file immediately. Start small (see §10) and grow as needed.
-
 ---
 
-## 6. Deploys, not sprints
+# 7. Deploys, not sprints
 
 Repo Business Context is **development-driven**, not documentation or sprint driven.
 Traditional models are designed for teams and calendars. For a solo founder + AI agents, the real rhythm is:
@@ -240,47 +284,13 @@ The context should evolve with the code, not be a separate artifact that lags be
 
 ---
 
-## 7. Keeping the Repo Business Context up to date
-
-The biggest RBC risk is **stale docs**. The payoff only exists if the context remains close to reality.
-
-As stated above, the context files are not to describe what is already told in the code, but to provide the business and product rationale, the "why" behind the code.
-
-This means that **not every code change requires a context update**. If you refactor a function or fix a bug, you likely don’t changed business' characteristics.
-
-But if you add a relevant feature, make a significant tech decision, or change your pricing, you should update the relevant context files to reflect the new reality and rationale.
-
-### 7.1. Included automations
-
-This template includes a set of GitHub Actions and scripts to keep the context healthy and the workflow smooth:
-
-1. **Context Steward** (`.github/workflows/context-steward.yml`)
-   - Checks if changes in `src/` are accompanied by updates in `/context`.
-   - Warns in the PR if context drift is detected, reminding you to keep docs in sync.
-
-2. **Commitlint** (`.github/workflows/commitlint.yml`)
-   - Enforces [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat:`, `fix:`, `docs:`).
-   - Ensures commit history is structured for automated release notes and changelogs.
-
-3. **Release Drafter** (`.github/workflows/release-drafter.yml`)
-   - Automatically drafts release notes based on merged PRs and labels.
-   - Categorizes changes (Features, Bug Fixes, Maintenance) so you don't have to write changelogs manually.
-
-4. **PR Template & Labels**
-   - `PULL_REQUEST_TEMPLATE.md` includes a checklist to verify context updates.
-   - `labels.yml` syncs a standard set of labels for categorizing PRs and issues.
-
-Feel free to disable or modify these workflows in `.github/` if they don't fit your process.
-
----
-
-## 8. Getting started in a new project
+# 8. Getting started in a new project
 
 You can adopt the Repo Business Context at any point: on a new repo, an existing one - even retroactively.
 
 The earlier you start, the more it can shape your development in a positive way.
 
-### 8.1. Structure
+## 8.1. Structure
 
 Use the `template/` folder and files structure as a starting point.
 
@@ -288,14 +298,14 @@ With them in place, AI agents can immediately start using the context to help yo
 
 > Caution to not substitute existing files with the template ones, like `.github/`, `AGENTS.md`, or `README.md`. You can merge their content manually if needed.
 
-### 8.2. Fill out context files
+## 8.2. Fill out context files
 
 Fill out the RBC files according to your project and needs, then:
 
 - Manually fill out: gradually grow and structure the key information into the RBC format.
 - Use text files or AI chat as a starting point: use AI agents to help you extract and structure the content into the RBC format.
 
-### 8.3. Validate
+## 8.3. Validate
 
 Ask your IDE agent:
 
@@ -305,7 +315,7 @@ If it can accurately describe your product, personas, stack, and constraints, yo
 
 ---
 
-## 9. Summary
+# 9. Summary
 
 The Repo Business Context turns your repo into a **living, AI‑first knowledge base** that encodes:
 

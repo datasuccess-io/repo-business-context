@@ -1,6 +1,5 @@
 ---
 status: active
-version: 1.0
 last_updated: 2026-02-09
 category: documentation
 tags: agents, ai, llm, readme, context, instructions
