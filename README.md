@@ -4,7 +4,23 @@
 
 ---
 
-## The problem
+## A new era of building
+
+Waterfall required a team. Agile required sprints, ceremonies, and dedicated roles. Neither anticipated what's possible today.
+
+A solopreneur can now sit down in the evening, chat with an AI, and ship something real before dinner. Developers ship without designers. Designers build without developers. Business people launch products without writing a line of code. The skill barrier collapsed — AI filled the gaps.
+
+The new rhythm: **chat → deploy**. Often multiple times a day. No sprint planning. No design handoffs. No stand-ups.
+
+Old frameworks were overhead designed to *coordinate a team*. You're not coordinating a team — you're directing an AI. That's a different problem, and it only needs a different (much lighter) solution.
+
+The challenge that remains: when you move this fast, it's easy to drift. What started as a "task manager" quietly becomes a "workflow platform" after thirty feature conversations. Your AI doesn't know the original intent — and neither do you anymore.
+
+**The repo is already your project management system.** Commits are the sprint. PRs are the retrospective. Releases are the milestones. RBC adds the one layer the repo was missing: the *business* context that gives all of it direction.
+
+---
+
+## The missing layer
 
 Every AI coding tool has solved *technical* context — `AGENTS.md`, Cursor rules, `CLAUDE.md`. None of them cover **business** context: who you're building for, your pricing, your brand voice, what's in scope and what isn't.
 
