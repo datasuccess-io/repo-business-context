@@ -1,6 +1,6 @@
 ---
 status: draft
-last_updated: 2026-04-19
+last_updated: 2026-04-20
 category: business
 tags: value-prop, messaging, pillars
 ---
@@ -19,6 +19,6 @@ Stop re-explaining your business to AI. Onboard in 5 minutes; context grows as y
 
 3. **Living document, not a spec.** The skill proposes updates as reality shifts. Drafts are cheap; only the user promotes to `active`. Context stays aligned without becoming a chore.
 
-4. **No runtime, no lock-in.** Markdown files + YAML frontmatter + one skill. Apache 2.0. Works across Claude, Codex, Cursor, Copilot via the `AGENTS.md` standard.
+4. **No runtime, no lock-in.** Markdown files + YAML frontmatter + one Claude skill. MIT license. No infrastructure. Zero conflict with any existing repo setup.
 
-5. **Selective loading prevents context rot.** Agents load only the 1–3 files a task needs, not the whole folder — sharper reasoning, less noise.
+5. **Selective loading prevents context rot.** Loading an entire business context file on every task degrades AI reasoning — models degrade measurably as input grows, losing focus on middle sections. RBC routes each task to 1–3 relevant files: the equivalent of RAG, without the infrastructure. Sharper responses, readable diffs, per-concept freshness tracking that a monolith can't provide.

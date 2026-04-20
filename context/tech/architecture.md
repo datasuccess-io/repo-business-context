@@ -41,6 +41,16 @@ Progressive disclosure: metadata always in context, SKILL.md on trigger, referen
 4. Agent responds using the loaded context.
 5. If task shifts business reality: agent proposes context updates; user confirms; files edited with `last_updated` bumped.
 
+## Why small focused files
+
+This is a deliberate architectural choice, not just convention.
+
+**Context rot is measurable.** Research on 18 frontier models found every one degrades as input grows — well before hitting the context window limit. The mechanism: transformer attention concentrates at the beginning and end of input. Middle sections receive significantly less attention regardless of content quality. A 500-line monolith `context.md` puts your pricing, architecture, personas, and brand voice in context simultaneously — and most of it becomes noise.
+
+**The routing table is manual RAG without infrastructure.** RAG (Retrieval-Augmented Generation) solves exactly this problem: don't load everything, load what's relevant. RBC does this with a deterministic routing table (task type → 1–3 files) instead of a vector search pipeline. For a single repo with a human in the loop, structured routing is more reliable than semantic similarity search, and requires nothing beyond Git.
+
+**Small files age predictably.** A change to `revenue-model.md` produces a clean, scoped diff. In a monolith, the same change is buried in hundreds of lines. Per-file `last_updated` + `status` gives meaningful staleness signals. A single `last_updated` on a monolith covers everything and therefore signals nothing.
+
 ## Why zero runtime
 
 - Solopreneur audience — no infrastructure to manage.

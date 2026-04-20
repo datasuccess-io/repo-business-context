@@ -1,6 +1,6 @@
 ---
 status: active
-last_updated: 2026-04-19
+last_updated: 2026-04-20
 category: documentation
 tags: readme, rbc, context, onboarding, skill
 license: MIT
@@ -22,7 +22,7 @@ author:
 RBC is a convention for storing **business, product, and operational knowledge** as small, structured Markdown files in `/context/`, alongside the code.
 
 - **AI-first** — YAML frontmatter, stable file paths, selective loading. Agents consume only the files they need per task.
-- **Claude-first** — a shipped skill (`/context/skills/repo-business-context/SKILL.md`) handles onboarding, routing, and keeping context fresh. Other agents follow `/AGENTS.md`.
+- **Claude-first** — a shipped skill (`.claude/skills/repo-business-context/SKILL.md`) handles onboarding, routing, and keeping context fresh.
 - **Living** — context grows as you build. Never a one-off spec, never a consultant deliverable.
 
 RBC is not a runtime, a library, or an ops framework. It's a lightweight context layer for repos where AI agents are real collaborators.
@@ -59,19 +59,32 @@ Not for: large orgs on Jira/Confluence/multi-repo setups, or throwaway prototype
 
 ## 4. How it works
 
-Three concepts, cleanly separated:
+Two concepts, cleanly separated:
 
 | Piece | Role |
 |---|---|
 | `/context/` | Knowledge base. Small focused Markdown files. User content. |
-| `/AGENTS.md` | Cross-tool protocol. Tells any AI how to behave in this repo. |
-| `/context/skills/repo-business-context/SKILL.md` | Operating system. Claude's onboarding, routing, and maintenance logic. |
+| `.claude/skills/repo-business-context/SKILL.md` | Operating system. Claude's onboarding, routing, and maintenance logic. |
 
 No runtime. No database. No custom tooling.
 
 ---
 
-## 5. The 5-minute onboarding
+## 5. Why small files outperform a single monolith
+
+The obvious alternative is one big `context.md`. It seems simpler. It isn't.
+
+**Context rot is measurable.** Research on 18 frontier models found every one degrades as input grows — well before the context window fills. The mechanism: transformer attention concentrates at the start and end of context. Middle sections get significantly less attention regardless of importance. A 500-line business context file means your pricing and your architecture are present (and diluting each other) even when you're writing a commit message.
+
+**RBC's routing is manual RAG without the infrastructure.** Every RAG system solves the same problem: don't load everything — load what's relevant. RBC does this with a deterministic routing table (task type → 1–3 files) instead of a vector search pipeline. For a single repo with a human in the loop, structured routing is more reliable than semantic search and requires zero infrastructure.
+
+**Small files age gracefully.** When pricing changes, you update `revenue-model.md` — a clean, attributable diff. In a monolith, that same change is noise in a 500-line document. Per-file `last_updated` + `status` frontmatter gives meaningful freshness signals. A single `last_updated` on a monolith covers everything and therefore means nothing.
+
+The "more files = more maintenance" intuition is the wrong frame. The skill handles update proposals. What you get instead: sharper AI reasoning, readable diffs, and per-concept freshness tracking.
+
+---
+
+## 6. The 5-minute onboarding
 
 On first invocation in an RBC-enabled repo, the skill offers three paths:
 
@@ -95,15 +108,11 @@ Skip upfront onboarding entirely. Start coding. When the agent hits a business-c
 
 ---
 
-## 6. File structure
+## 7. File structure
 
 ```
 /context
 ├── README.md                   # This file
-│
-├── skills/
-│   └── repo-business-context/
-│       └── SKILL.md            # Claude skill — operating system
 │
 ├── business/
 │   ├── vision.md               # Problem, mission, positioning
@@ -134,11 +143,13 @@ Skip upfront onboarding entirely. Start coding. When the agent hits a business-c
     └── channels.md             # Website, email, social — per-channel nuances
 ```
 
-Start with the files the skill drafts from your onboarding (likely 5–7 files). The rest exist as placeholders; add content as you need it.
+The skill lives at `.claude/skills/repo-business-context/` — installed at user level (`~/.claude/skills/`) or project level.
+
+Start with the files the skill drafts from your onboarding (likely 5–7 files). The rest are placeholders; add content as you need it.
 
 ---
 
-## 7. Frontmatter schema
+## 8. Frontmatter schema
 
 Every `/context/` file starts with:
 
@@ -160,33 +171,27 @@ tags: tag1, tag2
 
 ---
 
-## 8. How to adopt RBC
+## 9. How to adopt RBC
 
-1. Copy `/template/` into your repo root.
-2. Open the repo with Claude. The skill activates automatically.
-3. Pick an onboarding path — or skip and build gradually.
-4. Keep building. The agent proposes context updates as reality shifts.
-
-Already adopting another agent config (`AGENTS.md`, `.cursor/rules/`, `CLAUDE.md`)? RBC sits alongside them. The root `/AGENTS.md` in this template is the RBC entry point and is compatible with the open AGENTS.md standard.
+Install the skill at `~/.claude/skills/repo-business-context/` (user-level, works across all your repos) or `.claude/skills/repo-business-context/` (project-level, scoped to one repo). The skill scaffolds `/context/` and writes this README automatically on first run.
 
 ---
 
-## 9. Keeping it alive (not a burden)
+## 10. Keeping it alive (not a burden)
 
 RBC's #1 risk is stale files. Mitigations built into the framework:
 
 - **The skill proposes updates** — you're not maintaining alone.
 - **One answer, many files** — no ceremony, no one-to-one mapping.
 - **Drafts are cheap** — AI fills them; you only approve.
-- **Light CI checks** — optional GitHub Actions warn on drift. Not blockers.
 
 Not every code change needs a context update. Refactors and bug fixes usually don't. A new feature, new pricing, new provider, or new audience does.
 
 ---
 
-## 10. Summary
+## 11. Summary
 
-- RBC turns your repo into an AI-readable **business** knowledge layer — filling the gap that `AGENTS.md`, Cursor rules, and `CLAUDE.md` don't cover.
-- **Files** are the artifacts. **The skill** is the operating system. **`/AGENTS.md`** is the cross-tool protocol.
+- RBC turns your repo into an AI-readable **business** knowledge layer — filling the gap that technical context standards don't cover.
+- **Files** are the artifacts. **The skill** is the operating system.
 - **5 minutes** is your first value. **Living** is what retains it.
 - Intent in `/context/`. Execution in code. Agents keep them aligned.
