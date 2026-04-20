@@ -2,6 +2,8 @@
 
 > Stop re-explaining your business to AI. Onboard in 5 minutes; context grows as you ship.
 
+> **Note:** This implementation is **Claude-first** — the skill lives in `.claude/skills/` and is built for [Claude Code](https://claude.ai/code). The `/context/` framework itself is model-agnostic; the business context files work with any AI. To use with GPT, Gemini, or other tools that support a similar skill structure, rename the `.claude/` folder to `.agents/`. This may evolve as AI tooling standardizes.
+
 ---
 
 ## A new era of building
@@ -59,9 +61,16 @@ Every file has `status: draft | active | deprecated` frontmatter. AI drafts free
 
 ## Install
 
-**Step 1 — get the skill onto your machine.**
+### Where to install
 
-Clone this repo and copy the skill folder, then clean up:
+- **User-level** *(recommended for most)* — the skill loads automatically in every repo you open with Claude Code. Install once, works everywhere.
+- **Repo-level** — the skill lives inside a specific repo and travels with it when cloned or shared. Useful if you want the skill bundled with your project for teammates.
+
+---
+
+### Option A — Terminal
+
+**User-level:**
 
 ```bash
 git clone --depth 1 https://github.com/datasuccess-io/repo-business-context.git /tmp/rbc \
@@ -69,11 +78,30 @@ git clone --depth 1 https://github.com/datasuccess-io/repo-business-context.git 
   && rm -rf /tmp/rbc
 ```
 
-Prefer not to use the terminal? [Download the ZIP](https://github.com/datasuccess-io/repo-business-context/archive/refs/heads/main.zip), extract it, and copy the `.claude/skills/repo-business-context/` folder to `~/.claude/skills/`.
+**Repo-level** (run from inside your project folder):
 
-**Step 2 — open any repo in Claude Code.** The skill activates automatically and sets everything up from there.
+```bash
+git clone --depth 1 https://github.com/datasuccess-io/repo-business-context.git /tmp/rbc \
+  && mkdir -p .claude/skills \
+  && cp -r /tmp/rbc/.claude/skills/repo-business-context .claude/skills/ \
+  && rm -rf /tmp/rbc
+```
 
-**Project-level install** (scoped to one repo instead of all your repos): copy `.claude/skills/repo-business-context/` into your repo's `.claude/skills/` folder instead of `~/.claude/skills/`.
+---
+
+### Option B — Manual (no terminal required)
+
+1. [Download the ZIP](https://github.com/datasuccess-io/repo-business-context/archive/refs/heads/main.zip) and extract it.
+2. Inside the extracted folder, find `.claude/skills/repo-business-context/`.
+3. Copy that folder to the right place:
+   - **User-level:** `~/.claude/skills/` on Mac/Linux — or `C:\Users\your-name\.claude\skills\` on Windows.
+   - **Repo-level:** `.claude/skills/` inside your project folder (create it if it doesn't exist).
+
+---
+
+### Step 2 — open Claude Code
+
+Open any repo in Claude Code. The skill activates automatically and sets everything up from there.
 
 ---
 
