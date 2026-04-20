@@ -79,4 +79,4 @@ The complete guide — onboarding paths, file structure, frontmatter schema, how
 
 ## License
 
-[Apache 2.0](LICENSE.txt) — free to use, modify, and distribute.
+[MIT](LICENSE.txt) — free to use, modify, and distribute.

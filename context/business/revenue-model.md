@@ -9,7 +9,7 @@ tags: pricing, revenue, open-source, monetization
 
 ## Current state
 
-Open source under Apache 2.0. No monetization in v1. The goal is adoption, validation, and community feedback — not revenue.
+Open source under MIT. No monetization in v1. The goal is adoption, validation, and community feedback — not revenue.
 
 ## Possible future directions (explicitly deferred)
 
