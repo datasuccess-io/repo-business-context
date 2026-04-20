@@ -2,7 +2,6 @@
 status: draft
 last_updated: 2026-04-19
 category: product
-tags: use-cases, scenarios, workflows
 ---
 
 # Use Cases

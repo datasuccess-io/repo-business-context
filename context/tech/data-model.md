@@ -2,7 +2,6 @@
 status: draft
 last_updated: 2026-04-19
 category: tech
-tags: schema, frontmatter, data-structure
 ---
 
 # Data Model
@@ -18,7 +17,6 @@ A "context file" is a single Markdown document under `/context/` with YAML front
 status: draft | active | deprecated
 last_updated: YYYY-MM-DD
 category: brand | business | product | skill | tech
-tags: tag1, tag2
 ---
 ```
 

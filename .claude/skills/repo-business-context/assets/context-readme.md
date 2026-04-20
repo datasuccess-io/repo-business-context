@@ -165,7 +165,6 @@ tags: tag1, tag2
 - `status` — `draft` for AI-generated or unconfirmed content. `active` when the human promotes it. `deprecated` for historical files no longer in use.
 - `last_updated` — bumped on meaningful changes.
 - `category` — matches the folder.
-- `tags` — free-form, for search and agent retrieval.
 
 **Only the human promotes `draft` → `active`.** Agents draft freely; the user is the editor-in-chief.
 

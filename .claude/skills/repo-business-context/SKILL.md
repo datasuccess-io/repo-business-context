@@ -82,7 +82,6 @@ Every `/context/` file has YAML frontmatter:
 status: draft | active | deprecated
 last_updated: YYYY-MM-DD
 category: brand | business | product | skill | tech
-tags: tag1, tag2
 ---
 ```
 

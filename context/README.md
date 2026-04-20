@@ -2,7 +2,6 @@
 status: active
 last_updated: 2026-04-20
 category: documentation
-tags: readme, rbc, context, onboarding, skill
 license: MIT
 author:
   name: Igor Souza
@@ -158,14 +157,12 @@ Every `/context/` file starts with:
 status: draft | active | deprecated
 last_updated: YYYY-MM-DD
 category: brand | business | product | skill | tech
-tags: tag1, tag2
 ---
 ```
 
 - `status` — `draft` for AI-generated or unconfirmed content. `active` when the human promotes it. `deprecated` for historical files no longer in use.
 - `last_updated` — bumped on meaningful changes.
 - `category` — matches the folder.
-- `tags` — free-form, for search and agent retrieval.
 
 **Only the human promotes `draft` → `active`.** Agents draft freely; the user is the editor-in-chief.
 

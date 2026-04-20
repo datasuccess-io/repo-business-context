@@ -2,7 +2,6 @@
 status: draft
 last_updated: 2026-04-19
 category: brand
-tags: ux-principles, design-rules
 ---
 
 # UX Principles
