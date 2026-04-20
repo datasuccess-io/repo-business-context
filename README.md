@@ -59,19 +59,21 @@ Every file has `status: draft | active | deprecated` frontmatter. AI drafts free
 
 ## Install
 
-**User-level** — works across all your repos instantly:
+**Step 1 — get the skill onto your machine.**
+
+Clone this repo and copy the skill folder, then clean up:
 
 ```bash
-cp -r .claude/skills/repo-business-context ~/.claude/skills/
+git clone --depth 1 https://github.com/datasuccess-io/repo-business-context.git /tmp/rbc \
+  && cp -r /tmp/rbc/.claude/skills/repo-business-context ~/.claude/skills/ \
+  && rm -rf /tmp/rbc
 ```
 
-**Project-level** — scoped to one repo:
+Prefer not to use the terminal? [Download the ZIP](https://github.com/datasuccess-io/repo-business-context/archive/refs/heads/main.zip), extract it, and copy the `.claude/skills/repo-business-context/` folder to `~/.claude/skills/`.
 
-```bash
-cp -r .claude/skills/repo-business-context /your-repo/.claude/skills/
-```
+**Step 2 — open any repo in Claude Code.** The skill activates automatically and sets everything up from there.
 
-Then open any repo in Claude Code. The skill activates automatically and sets everything up.
+**Project-level install** (scoped to one repo instead of all your repos): copy `.claude/skills/repo-business-context/` into your repo's `.claude/skills/` folder instead of `~/.claude/skills/`.
 
 ---
 
@@ -87,11 +89,11 @@ This is the version worth shipping.
 
 ---
 
-## Full documentation
+## Going deeper
 
-The complete guide — onboarding paths, file structure, frontmatter schema, how context stays alive — lives inside the framework itself:
+Everything above is enough to get started. If you want to understand the framework in full — onboarding paths, frontmatter schema, file structure rationale, how context stays alive over time — it's all in [`context/README.md`](context/README.md).
 
-→ [`context/README.md`](context/README.md)
+This repo itself is built with RBC. Browse [`/context`](context/) to see it working in a real project.
 
 ---
 
