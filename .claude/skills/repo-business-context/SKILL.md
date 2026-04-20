@@ -89,13 +89,32 @@ tags: tag1, tag2
 **Rules:**
 
 - `active` — canonical. Use without caveat.
-- `draft` — provisional. When you act on it, flag explicitly: *"Based on [draft] `business/personas.md`, which still needs your confirmation: …"*
+- `draft` — provisional. Flag it **once per session** for high-stakes tasks. See "Draft flagging" below.
 - `deprecated` — do not use unless the user explicitly asks.
 - **You never promote `draft` → `active` on your own.** Only the user does that. When you create new content (onboarding, gap-filling), it starts as `draft`.
 - When you update a file's content, bump `last_updated` to today.
 - If a file becomes obsolete, set `status: deprecated` and add a pointer to the replacement.
 
 Why this matters: AI-drafted content that silently becomes "canonical" is the fastest way to erode user trust in the framework. Drafts are cheap and honest.
+
+### Draft flagging — calibrated, not blanket
+
+Flag a draft file only when **all three** are true:
+1. The content was **AI-inferred** — not explicitly stated by the user (e.g., voice inferred from writing style, architecture extracted from codebase scan)
+2. The task is **high-stakes** — marketing copy, pricing, positioning, scope decisions, public-facing content
+3. You haven't flagged this file **in the current session already**
+
+Do not flag when:
+- The user filled the file in the current session — they know
+- The task is low-stakes — commit messages, debugging, refactoring, code structure
+- Every file in the repo is `draft` (new repo, first week) — flagging everything signals nothing
+- You've already noted it this session
+
+When the flag fires, one short inline note, then proceed — no disclaimers on every paragraph:
+
+> *"Using `brand/voice.md` (AI-inferred draft — worth a review when you get a chance)."*
+
+Don't repeat it for the same file in the same session.
 
 ---
 

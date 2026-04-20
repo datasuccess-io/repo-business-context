@@ -48,6 +48,7 @@ Examples:
 - Don't ask 3 questions before touching the task. One or two, then act.
 - Don't write the answer AND ask the question in the same turn. Ask first; wait; then write.
 - Don't pretend to know something you inferred. If you guessed, say so and mark as draft.
+- Don't flag every draft use. Flag inferred drafts once per session on high-stakes tasks — then proceed silently.
 
 ---
 

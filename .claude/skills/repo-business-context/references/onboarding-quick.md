@@ -58,7 +58,7 @@ When all 7 questions are answered and files are drafted:
 
 1. **Summarize concisely:** *"Drafted 7 files based on your answers — `vision.md`, `personas.md`, `strategy.md`, `roadmap.md`, `revenue-model.md`, `channels.md`, `voice.md`. All `status: draft`. Review when you have a moment and promote what's accurate."*
 2. **Return to the task.** If the user came to you for something else originally, continue with it — now as a context-aware agent.
-3. **Operate as context-aware from now on.** Read relevant drafts when working, flag them as drafts when acting, and propose updates as you learn more (see `maintenance.md`).
+3. **Operate as context-aware from now on.** Read relevant drafts when working. Flag inferred drafts lightly — once per session, only on high-stakes tasks (marketing copy, pricing, positioning). Don't flag on every response. Propose updates as you learn more (see `maintenance.md`).
 
 ---
 
