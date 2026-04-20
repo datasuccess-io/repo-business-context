@@ -16,11 +16,15 @@ That world changed. A solopreneur today can sit down, chat with an AI, and ship 
 
 Traditional frameworks can't keep up. They weren't built for this rhythm, this speed, or this level of role overlap.
 
+**Writing code is no longer the bottleneck — business clarity is.** AI writes the code. What it can't do on its own is know who you're building for, what problem actually matters, or where the product should stop growing. Give it that context and it stops being a developer and becomes a business partner: it can advise on trade-offs, flag scope creep, and push back when a feature doesn't fit the ICP.
+
+**And the repo is expanding.** With modern MCPs, agents, skills, and AI-powered IDEs, the same repo that ships your product can now generate social posts, write sales pitches, brief a customer service agent, or produce a media kit — all coherent, all on-brand, because they all draw from the same business context. The repo is becoming a full business operating system.
+
 ## What this is
 
 Repo Business Context (RBC) — a lightweight framework that adds the one layer this new era still needs: business context, living inside the repo alongside the code.
 
-The repo is already the project management system. Commits are the sprint record. PRs are the retrospective. Releases are the milestones. RBC adds the *why* — who you're building for, what you're solving, where you're going — so the AI stays aligned as the product evolves at speed.
+The repo is already the project management system. Commits are the sprint record. PRs are the retrospective. Releases are the milestones. RBC adds the *why* — who you're building for, what you're solving, where you're going — so the AI stays aligned as the product evolves at speed, and every output it generates reflects the actual business.
 
 One Claude skill does the work: bootstraps the structure, onboards in 5 minutes, routes tasks to the right context, and proposes updates when reality shifts. No planning overhead. No separate tools. Nothing that slows you down.
 
@@ -31,7 +35,7 @@ Make business context as natural and maintainable as code — so solopreneurs ca
 ## Positioning
 
 - **The missing layer for AI-era building** — not a planning tool, not a project manager, not a documentation system. The thin context layer that keeps a solopreneur and their AI aligned.
-- **The repo is the source of truth** — business, product, and technical reality all versioned together. No external tools. No context fragmentation.
+- **The repo as a business operating system** — when business context lives in the repo, every AI-powered output draws from the same source. Code, copy, social posts, sales materials — all coherent.
 - **Claude-first** — best experience through the shipped skill; zero-conflict install for any repo.
 
 ## Boundaries

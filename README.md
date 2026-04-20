@@ -20,6 +20,10 @@ The challenge that remains: when you move this fast, it's easy to drift. What st
 
 **The repo is already your project management system.** Commits are the sprint. PRs are the retrospective. Releases are the milestones. RBC adds the one layer the repo was missing: the *business* context that gives all of it direction.
 
+**Writing code is no longer the bottleneck — business clarity is.** AI writes the code. What it can't do on its own is know who you're building for, what problem actually matters, or where the product should stop growing. Give it that context and it stops being a developer and becomes a business partner: it can advise on trade-offs, flag features that don't fit your ICP, write copy that sounds like you, and push back when scope creeps.
+
+**And the repo is becoming the hub for far more than code.** With modern MCPs, agents, skills, and AI-powered IDEs, the same repo that ships your product can now generate your social posts, write your sales pitch, brief a customer service agent, or produce your media kit — all coherent, all on-brand, because they're all drawing from the same business context. RBC is what makes that possible.
+
 ---
 
 ## The missing layer
