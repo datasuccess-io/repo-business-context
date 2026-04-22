@@ -1,5 +1,5 @@
 ---
-status: draft
+status: active
 last_updated: 2026-04-20
 category: business
 ---
@@ -12,9 +12,9 @@ Traditional project frameworks (waterfall, agile, scrum) were built for teams �
 
 The AI era broke that assumption. The solopreneur-AI pairing doesn't plan sprints — it discovers, builds, and ships, often the same day. The old frameworks create overhead without providing value for this workflow.
 
-This creates a clear gap: the solopreneur needs *just enough* structure to stay aligned without slowing down. Not a planning tool. Not a project manager. A thin context layer that evolves with the product.
+This creates a clear gap: the solopreneur needs _just enough_ structure to stay aligned without slowing down. Not a planning tool. Not a project manager. A thin context layer that evolves with the product.
 
-RBC fills that gap. Positioned as the framework *for* the AI era, not adapted from the team era.
+RBC fills that gap. Positioned as the framework _for_ the AI era, not adapted from the team era.
 
 ## Differentiator
 
@@ -25,11 +25,12 @@ RBC is the first to treat business context as first-class, versioned, in-repo ar
 ## The repo-as-record insight
 
 In the AI-era workflow, the repo already contains the full product history:
+
 - Commits = the sprint record
 - PRs = the retrospective
 - Releases = the milestones
 
-RBC adds the one thing missing: the business context that makes that history meaningful. You don't plan ahead — you chat, deploy, and the product documents itself. RBC keeps the *why* aligned as the *what* evolves.
+RBC adds the one thing missing: the business context that makes that history meaningful. You don't plan ahead — you chat, deploy, and the product documents itself. RBC keeps the _why_ aligned as the _what_ evolves.
 
 ## Claude-first, tool-agnostic fallback
 

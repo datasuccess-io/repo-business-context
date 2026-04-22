@@ -1,12 +1,12 @@
 ---
-status: draft
+status: active
 last_updated: 2026-04-19
 category: brand
 ---
 
 # Voice
 
-*Inferred from the founder's writing style during RBC design conversations. Please review.*
+_Inferred from the founder's writing style during RBC design conversations. Please review._
 
 ## Adjectives
 

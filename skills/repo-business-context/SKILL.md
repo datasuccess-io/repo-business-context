@@ -1,8 +1,12 @@
 ---
 name: repo-business-context
 description: Use whenever working in a repo containing a /context/ folder (Repo Business Context framework), or when a user wants to set up RBC for the first time, document their project for AI agents, or start capturing business context. Teaches the agent to read, write, and maintain business, product, tech, and brand context as small focused Markdown files; to load selectively (never the whole folder); to respect status:active|draft|deprecated discipline; and to onboard the user via three paths — quick 5W2H questionnaire (~5 min), codebase extraction (existing repos), or build-gradually (default, lazy 1-2 questions during normal work). Trigger on any task involving business context — personas, ICP, pricing, roadmap, positioning, brand voice, value prop, strategy — even if the user doesn't mention RBC. Trigger on first invocation in an RBC-enabled repo to check if onboarding is needed. Trigger when code or requirement changes shift business reality and context files may need updating.
-category: skill
-version: 1.0.0
+license: MIT
+compatibility: Designed for any skill-aware LLM or CLI tools, including amp, antigravity, claude-code, clawdbot, codex, cursor, droid, gemini, gemini-cli, github-copilot, goose, kilo, kiro-cli, opencode, roo, trae, and windsurf.
+metadata:
+  author: issouza
+  version: "1.0.0"
+  category: skill
 ---
 
 # Repo Business Context (RBC) — Operating System
@@ -32,7 +36,7 @@ Look for `/context/README.md` and the four subfolders (`business/`, `product/`, 
 
 1. Create `/context/` and its four subfolders (`business/`, `product/`, `tech/`, `brand/`).
 2. Write `/context/README.md` from `assets/context-readme.md` (in this skill's directory).
-3. Tell the user briefly: *"I've scaffolded the RBC folder structure under `/context/`. Let's set up your business context."*
+3. Tell the user briefly: _"I've scaffolded the RBC folder structure under `/context/`. Let's set up your business context."_
 
 Then continue to the situation detection below.
 
@@ -54,9 +58,10 @@ Most of the files under `/context/business/`, `/context/product/`, `/context/bra
 2. **Extract from codebase** — scan the repo for business signals and draft inferences for you to confirm. Good for existing codebases with a meaningful README and structure.
 3. **Build gradually (default)** — skip the upfront flow. I'll ask 1–2 minimal questions only when I hit a context gap during normal work.
 
-Phrase it conversationally, e.g.: *"Before I help with this — your `/context/` looks empty, so I don't have your business details yet. Want me to run the 5-minute onboarding, extract what I can from the codebase, or just keep working and fill context as we go?"*
+Phrase it conversationally, e.g.: _"Before I help with this — your `/context/` looks empty, so I don't have your business details yet. Want me to run the 5-minute onboarding, extract what I can from the codebase, or just keep working and fill context as we go?"_
 
 If the user picks a path, load the matching reference file:
+
 - Quick → `references/onboarding-quick.md`
 - Codebase → `references/onboarding-codebase.md`
 - Gradually (or no answer, or "just go") → `references/onboarding-gradual.md` and proceed with the original task.
@@ -99,11 +104,13 @@ Why this matters: AI-drafted content that silently becomes "canonical" is the fa
 ### Draft flagging — calibrated, not blanket
 
 Flag a draft file only when **all three** are true:
+
 1. The content was **AI-inferred** — not explicitly stated by the user (e.g., voice inferred from writing style, architecture extracted from codebase scan)
 2. The task is **high-stakes** — marketing copy, pricing, positioning, scope decisions, public-facing content
 3. You haven't flagged this file **in the current session already**
 
 Do not flag when:
+
 - The user filled the file in the current session — they know
 - The task is low-stakes — commit messages, debugging, refactoring, code structure
 - Every file in the repo is `draft` (new repo, first week) — flagging everything signals nothing
@@ -111,7 +118,7 @@ Do not flag when:
 
 When the flag fires, one short inline note, then proceed — no disclaimers on every paragraph:
 
-> *"Using `brand/voice.md` (AI-inferred draft — worth a review when you get a chance)."*
+> _"Using `brand/voice.md` (AI-inferred draft — worth a review when you get a chance)."_
 
 Don't repeat it for the same file in the same session.
 

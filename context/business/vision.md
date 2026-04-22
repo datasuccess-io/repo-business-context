@@ -1,5 +1,5 @@
 ---
-status: draft
+status: active
 last_updated: 2026-04-20
 category: business
 ---
@@ -24,7 +24,7 @@ Traditional frameworks can't keep up. They weren't built for this rhythm, this s
 
 Repo Business Context (RBC) — a lightweight framework that adds the one layer this new era still needs: business context, living inside the repo alongside the code.
 
-The repo is already the project management system. Commits are the sprint record. PRs are the retrospective. Releases are the milestones. RBC adds the *why* — who you're building for, what you're solving, where you're going — so the AI stays aligned as the product evolves at speed, and every output it generates reflects the actual business.
+The repo is already the project management system. Commits are the sprint record. PRs are the retrospective. Releases are the milestones. RBC adds the _why_ — who you're building for, what you're solving, where you're going — so the AI stays aligned as the product evolves at speed, and every output it generates reflects the actual business.
 
 One Claude skill does the work: bootstraps the structure, onboards in 5 minutes, routes tasks to the right context, and proposes updates when reality shifts. No planning overhead. No separate tools. Nothing that slows you down.
 

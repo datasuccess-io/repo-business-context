@@ -1,6 +1,6 @@
 ---
 status: active
-last_updated: 2026-04-20
+last_updated: 2026-04-22
 category: documentation
 license: MIT
 author:
@@ -14,19 +14,15 @@ author:
 
 > Small, AI-readable business context inside your repo — so agents stop guessing what you're building and who for.
 
----
-
 ## 1. What RBC is
 
 RBC is a convention for storing **business, product, and operational knowledge** as small, structured Markdown files in `/context/`, alongside the code.
 
 - **AI-first** — YAML frontmatter, stable file paths, selective loading. Agents consume only the files they need per task.
-- **Claude-first** — a shipped skill (`.claude/skills/repo-business-context/SKILL.md`) handles onboarding, routing, and keeping context fresh.
+- **Skill-first** — a shipped skill (`skills/repo-business-context/SKILL.md`) handles onboarding, routing, and keeping context fresh. Compatible with Claude Code, Copilot, Gemini CLI, and other skill-aware LLM tools.
 - **Living** — context grows as you build. Never a one-off spec, never a consultant deliverable.
 
 RBC is not a runtime, a library, or an ops framework. It's a lightweight context layer for repos where AI agents are real collaborators.
-
----
 
 ## 2. Why RBC exists
 
@@ -44,8 +40,6 @@ With RBC, you say:
 
 RBC covers the gap between "what the code does" and "why it exists, for whom, and how it should feel."
 
----
-
 ## 3. Who it's for
 
 - **Solopreneurs building with AI agents** — the developer is also the founder.
@@ -54,20 +48,16 @@ RBC covers the gap between "what the code does" and "why it exists, for whom, an
 
 Not for: large orgs on Jira/Confluence/multi-repo setups, or throwaway prototypes.
 
----
-
 ## 4. How it works
 
 Two concepts, cleanly separated:
 
-| Piece | Role |
-|---|---|
-| `/context/` | Knowledge base. Small focused Markdown files. User content. |
-| `.claude/skills/repo-business-context/SKILL.md` | Operating system. Claude's onboarding, routing, and maintenance logic. |
+| Piece                                   | Role                                                          |
+| --------------------------------------- | ------------------------------------------------------------- |
+| `/context/`                             | Knowledge base. Small focused Markdown files. User content.   |
+| `skills/repo-business-context/SKILL.md` | Operating system. Onboarding, routing, and maintenance logic. |
 
 No runtime. No database. No custom tooling.
-
----
 
 ## 5. Why small files outperform a single monolith
 
@@ -80,8 +70,6 @@ The obvious alternative is one big `context.md`. It seems simpler. It isn't.
 **Small files age gracefully.** When pricing changes, you update `revenue-model.md` — a clean, attributable diff. In a monolith, that same change is noise in a 500-line document. Per-file `last_updated` + `status` frontmatter gives meaningful freshness signals. A single `last_updated` on a monolith covers everything and therefore means nothing.
 
 The "more files = more maintenance" intuition is the wrong frame. The skill handles update proposals. What you get instead: sharper AI reasoning, readable diffs, and per-concept freshness tracking.
-
----
 
 ## 6. The 5-minute onboarding
 
@@ -104,8 +92,6 @@ For existing repos. The agent scans `README.md`, `package.json`, folder names, a
 Skip upfront onboarding entirely. Start coding. When the agent hits a business-context gap during normal work ("I need your ICP to write this landing page"), it asks 1–2 questions and saves the answer.
 
 **The onboarding is a floor, not a ceiling.** Context grows through every subsequent conversation. The "5-minute" promise is your first value — the living-document behavior is what keeps it useful.
-
----
 
 ## 7. File structure
 
@@ -142,11 +128,9 @@ Skip upfront onboarding entirely. Start coding. When the agent hits a business-c
     └── channels.md             # Website, email, social — per-channel nuances
 ```
 
-The skill lives at `.claude/skills/repo-business-context/` — installed at user level (`~/.claude/skills/`) or project level.
+The skill lives at `skills/repo-business-context/` — installed at user level or project level (see the main README for paths).
 
 Start with the files the skill drafts from your onboarding (likely 5–7 files). The rest are placeholders; add content as you need it.
-
----
 
 ## 8. Frontmatter schema
 
@@ -166,13 +150,9 @@ category: brand | business | product | skill | tech
 
 **Only the human promotes `draft` → `active`.** Agents draft freely; the user is the editor-in-chief.
 
----
-
 ## 9. How to adopt RBC
 
-Install the skill at `~/.claude/skills/repo-business-context/` (user-level, works across all your repos) or `.claude/skills/repo-business-context/` (project-level, scoped to one repo). The skill scaffolds `/context/` and writes this README automatically on first run.
-
----
+Install the skill following [main README](../README.md#install) instructions. The skill scaffolds `/context/` and writes this README automatically on first run.
 
 ## 10. Keeping it alive (not a burden)
 
@@ -183,8 +163,6 @@ RBC's #1 risk is stale files. Mitigations built into the framework:
 - **Drafts are cheap** — AI fills them; you only approve.
 
 Not every code change needs a context update. Refactors and bug fixes usually don't. A new feature, new pricing, new provider, or new audience does.
-
----
 
 ## 11. Summary
 
