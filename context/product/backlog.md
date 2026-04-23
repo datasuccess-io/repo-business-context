@@ -1,23 +1,19 @@
----
-status: active
-last_updated: 2026-04-19
-category: product
----
-
 # Backlog
 
 ## High priority (next)
 
-- **Test the skill in real use.** Dogfood on this repo and on a second real project. Capture friction points.
-- **Trigger evals.** Build a small test set (10–20 prompts, should-trigger / should-not mix) to validate skill activation. Use skill-creator's description optimization loop.
-- **Write announcement.** LinkedIn post (and maybe Twitter/X) introducing RBC, once the skill feels solid.
+- **Merge onboarding files.** The quick onboarding has the best documentation. 5W2H is the base for every onboarding, only the way of gathering information differs.
+- **Business Assistant.** Make the agent capable of giving business directions and intervene when the users asks to something pointing off the documented business model.
 
 ## Medium
 
-- **Packaging.** Decide distribution: user-level install instructions, marketplace `.skill` file, or both.
-- **Examples gallery.** Sample `/context/` folders for 3–4 product types (SaaS, CLI tool, browser extension, agency site).
+- **Test context update.** Seems like `backlog.md`, `roadmap.md`, and other files are not updating themselves. Maybe leaving these files behind is the best approach, since solopreneurs move too fast, and LLMs can have their own ways to organize tasks (e.g. TODO.md)
 
 ## Low / later
 
-- **Non-SaaS onboarding reference.** Current 5W2H questions lean SaaS; add adaptations for info products, agencies, local businesses.
-- **Codebase-extraction heuristics expansion.** More frameworks (Rails, Django, Expo, Tauri), more signal sources.
+- **Write announcement.** LinkedIn post (and maybe Twitter/X) introducing RBC, once the skill feels solid.
+- **Community support.** Integrate github with payment and tips to encourage community contributions. Add a `CONTRIBUTING.md` file to the repo.
+
+## Frequently
+
+- **Update the features.** Update the features per skill latest changes.

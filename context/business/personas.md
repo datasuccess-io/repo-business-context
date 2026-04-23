@@ -1,9 +1,3 @@
----
-status: active
-last_updated: 2026-04-19
-category: business
----
-
 # Personas
 
 ## Primary — Solopreneur-Developer (ICP)
@@ -25,3 +19,5 @@ category: business
 - Large organizations with dedicated product/marketing/ops teams and mature docs in Jira/Confluence.
 - Multi-repo setups with services owned by different teams.
 - Throwaway prototypes or one-off scripts.
+- Teams or people that prefer to document the business context outside the repository (e.g. Confluence, Waybook, etc.)
+- Teams or people that prefer to document/organize tasks outside the repository (e.g. Jira, Asana, etc.)
