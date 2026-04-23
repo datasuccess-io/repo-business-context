@@ -1,9 +1,3 @@
----
-status: active
-last_updated: 2026-04-20
-category: business
----
-
 # Value Proposition
 
 ## Tagline

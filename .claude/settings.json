@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Read(./*)",
+      "Write(./*)",
+      "Edit(./*)",
+      "Glob(./*)"
+    ]
+  }
+}

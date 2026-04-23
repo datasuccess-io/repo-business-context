@@ -1,19 +1,5 @@
----
-status: active
-last_updated: 2026-04-19
-category: product
----
-
 # Integrations
 
-## Claude Code
+The only compatibility RBC needs to have is **Agent Skills**, a standardized way to give AI agents new capabilities and expertise.
 
-Primary host. The skill is installed at user level (`~/.claude/skills/`) or project level (`.claude/skills/` in the repo root). No other runtime.
-
-## GitHub
-
-Repository hosting. Users install the skill from this repo.
-
-## No other integrations
-
-RBC is pure Markdown + YAML + Git. No CI pipelines, no SaaS APIs, no runtime servers. The skill is the only active component.
+It's fully documented on the [Agent Skills](https://agentskills.io/) website.

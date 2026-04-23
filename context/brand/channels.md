@@ -1,14 +1,9 @@
----
-status: active
-last_updated: 2026-04-19
-category: brand
----
-
 # Channels
 
 ## Primary
 
 - **GitHub repo** — the RBC repository itself. README and template are the primary "landing page" for now.
+- **skills.sh website** - this repository is compatible with the `skills` CLI and will be listed there.
 
 ## Secondary (planned)
 

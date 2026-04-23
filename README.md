@@ -1,12 +1,10 @@
 # Repo Business Context (RBC)
 
-**Stop re-explaining your business to AI. Onboard in 5 minutes; context grows as you ship.**
-
----
+Stop re-explaining your business to AI. Onboard in 5 minutes; context grows as you ship.
 
 ## A new era of building
 
-Waterfall required a team. Agile required sprints, ceremonies, and dedicated roles. Neither anticipated what's possible today.
+Waterfall required a team. Agile required sprints, ceremonies, and dedicated roles. Neither anticipated what's possible with AI today.
 
 A solopreneur can now sit down in the evening, chat with an AI, and ship something real before dinner. Developers ship without designers. Designers build without developers. Business people launch products without writing a line of code. The skill barrier collapsed — AI filled the gaps.
 
@@ -16,11 +14,17 @@ Old frameworks were overhead designed to _coordinate a team_. You're not coordin
 
 The challenge that remains: when you move this fast, it's easy to drift. What started as a "task manager" quietly becomes a "workflow platform" after thirty feature conversations. Your AI doesn't know the original intent — and neither do you anymore.
 
-**The repo is already your project management system.** Commits are the sprint. PRs are the retrospective. Releases are the milestones. RBC adds the one layer the repo was missing: the _business_ context that gives all of it direction.
+### The repo is your project management system
 
-**Writing code is no longer the bottleneck — business clarity is.** AI writes the code. What it can't do on its own is know who you're building for, what problem actually matters, or where the product should stop growing. Give it that context and it stops being a developer and becomes a business partner: it can advise on trade-offs, flag features that don't fit your ICP, write copy that sounds like you, and push back when scope creeps.
+Commits are the sprint. PRs are the retrospective. Releases are the milestones. RBC adds the one layer the repo was missing: the _business_ context that gives all of it direction.
 
-**And the repo is becoming the hub for far more than code.** With modern MCPs, agents, skills, and AI-powered IDEs, the same repo that ships your product can now generate your social posts, write your sales pitch, brief a customer service agent, or produce your media kit — all coherent, all on-brand, because they're all drawing from the same business context. RBC is what makes that possible.
+### Coding is no longer the bottleneck — business clarity is
+
+AI writes the code. What it can't do on its own is know who you're building for, what problem actually matters, or where the product should stop growing. Give it that context and it stops being a developer and becomes a business partner: it can advise on trade-offs, flag features that don't fit your ICP, write copy that sounds like you, and push back when scope creeps.
+
+### The repo is the hub for far more than code
+
+With modern MCPs, agents, skills, and AI-powered IDEs, the same repo that ships your product can now generate your social posts, write your sales pitch, brief a customer service agent, or produce your media kit — all coherent, all on-brand, because they're all drawing from the same business context. RBC is what makes that possible.
 
 ## The missing layer
 
@@ -34,6 +38,13 @@ RBC fixes that. It puts business context directly in your repo — small, struct
 
 ## How it works
 
+Two concepts, cleanly separated:
+
+| Piece                     | Role                                                          |
+| ------------------------- | ------------------------------------------------------------- |
+| Folder `/context` in repo | Knowledge base. Small focused Markdown files. User content.   |
+| AI agent Skill            | Operating system. Onboarding, routing, and maintenance logic. |
+
 One skill does everything:
 
 - **Bootstraps** `/context/` on first run — folder structure + README, no copying required
@@ -45,51 +56,60 @@ Your context lives in small, focused Markdown files:
 
 ```
 /context
-├── business/   # vision, personas, strategy, pricing, value prop
-├── product/    # roadmap, features, use cases, backlog
-├── tech/       # architecture, conventions, providers
-└── brand/      # voice, channels, UX principles
+├── brand/      # assets, channels, ux-principles, vision, voice
+├── business/   # domain-model, personas, revenue-model, strategy, value-prop
+└── product/    # backlog, features, integrations, use-cases, ui-principles
 ```
 
-Every file has `status: draft | active | deprecated` frontmatter. AI drafts freely; you promote to `active`. You're always the editor-in-chief.
+> [!NOTE]
+> The skill activates automatically on the first business-context task.
 
-**Structured like code, not like a wiki.** The obvious alternative is one big `context.md` — simpler on the surface, worse in practice. Loading your entire business context on every task degrades AI reasoning: models lose focus as input grows, attending well to the start and end of context but poorly to the middle. RBC routes each task to 1–3 relevant files. Same principle as RAG, zero infrastructure. The result: sharper responses, readable diffs, and per-concept freshness tracking that a monolith can't provide.
+### Structured like code, not like a wiki.
+
+The obvious alternative is one big `context.md` — simpler on the surface, worse in practice. Loading your entire business context on every task degrades AI reasoning: models lose focus as input grows, attending well to the start and end of context but poorly to the middle. RBC routes each task to 1–3 relevant files. Same principle as RAG, zero infrastructure. The result: sharper responses, readable diffs, and per-concept freshness tracking that a monolith can't provide.
 
 ## Install
 
-Skills work at two scopes:
+Choose one of the following methods to install the RBC skill.
 
-- **User-level** — install once, available in every repo you open.
-- **Repo-level** — travels with the repo when cloned or shared. Good for teams.
+> [!IMPORTANT]
+> We recommend install using `skills` CLI, within repo-level scope.
 
-### Using the `skills` CLI
+### CLI
+
+**Repo-level:** travels with the repo when cloned or shared. Good for teams.
 
 ```bash
-# Repo-level (default) — cross-client standard (.agents/skills/)
 npx skills add issouza/repo-business-context
+```
 
-# User-level
+**User-level:** install once, available in every repo you open.
+
+```bash
 npx skills add -g issouza/repo-business-context
 ```
 
-To install only for Claude Code (`.claude/skills/`):
-
-```bash
-npx skills add -a claude issouza/repo-business-context
-npx skills add -a claude -g issouza/repo-business-context  # user-level
-```
+> [!TIP]
+> You can update your skill using `npx skills update repo-business-context`.
 
 ### Manual
 
 1. [Download the ZIP](https://github.com/issouza/repo-business-context/archive/refs/heads/main.zip) and extract it.
 2. Inside the extracted folder, open `skills/` and copy the `repo-business-context/` folder into your target path:
 
-| Scope | Cross-client | Claude Code only |
-|---|---|---|
+| Scope      | Cross-client        | Claude Code only    |
+| ---------- | ------------------- | ------------------- |
 | User-level | `~/.agents/skills/` | `~/.claude/skills/` |
-| Repo-level | `.agents/skills/` | `.claude/skills/` |
+| Repo-level | `.agents/skills/`   | `.claude/skills/`   |
 
-Once installed, open your repo in any supported AI tool. The skill activates automatically on the first business-context task.
+Once installed, open your repo in any supported AI tool.
+
+## Going deeper
+
+Everything above is enough to get started. If you want to understand the framework in full — onboarding paths, file structure rationale, how the agent keeps context current across sessions — it's all in [`context/README.md`](context/README.md).
+
+> [!TIP]
+> This repo itself is built with RBC. Browse [`/context`](context/) to see it working in a real project.
 
 ## The journey to skill-only
 
@@ -101,11 +121,7 @@ The final version is the simplest possible form: **one skill, no files to copy, 
 
 This is the version worth shipping.
 
-## Going deeper
-
-Everything above is enough to get started. If you want to understand the framework in full — onboarding paths, frontmatter schema, file structure rationale, how context stays alive over time — it's all in [`context/README.md`](context/README.md).
-
-This repo itself is built with RBC. Browse [`/context`](context/) to see it working in a real project.
+Two more decisions that followed the same logic: context files carry no frontmatter — plain Markdown, nothing to maintain. And the agent doesn't propose updates and wait for approval — it updates context autonomously as the product evolves, announcing each change so nothing is invisible.
 
 ## License
 

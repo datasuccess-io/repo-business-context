@@ -1,9 +1,3 @@
----
-status: active
-last_updated: 2026-04-20
-category: business
----
-
 # Vision
 
 ## The era
@@ -36,7 +30,7 @@ Make business context as natural and maintainable as code — so solopreneurs ca
 
 - **The missing layer for AI-era building** — not a planning tool, not a project manager, not a documentation system. The thin context layer that keeps a solopreneur and their AI aligned.
 - **The repo as a business operating system** — when business context lives in the repo, every AI-powered output draws from the same source. Code, copy, social posts, sales materials — all coherent.
-- **Claude-first** — best experience through the shipped skill; zero-conflict install for any repo.
+- **AI-first** — best experience through the shipped skill; zero-conflict install for any repo.
 
 ## Boundaries
 
