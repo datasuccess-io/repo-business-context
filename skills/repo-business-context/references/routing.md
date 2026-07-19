@@ -1,12 +1,12 @@
 # RBC file selection and handling
 
-This document contain a map of common RBC files. Consult it to know which files to load for a given task.
+This document contains a map of common RBC files. Consult it to know which files to load for a given task.
 
 - Load **only** the files relevant for the task/answer at hand. Never load the full `/context/` folder.
 
 > Why this matters: context rot is real. Models reason more sharply on 1-3 focused files than on 20 loosely-related ones, even when the window can technically hold them all. Precise loading is a feature, not a constraint.
 
-Undertanding the reasoning behind folders and files, you'll be able to choose the right files to load intuitively.
+Understanding the reasoning behind folders and files, you'll be able to choose the right files to load intuitively.
 
 ## Routing references
 

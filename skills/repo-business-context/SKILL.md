@@ -1,12 +1,12 @@
 ---
 name: repo-business-context
-description: Repo Business Context (RBC) help agents to manage business context within code repositories. Turn agents from code monkeys into business partners that can code. It stores and updates brand, business, and product context as plain Markdown files in the `/context` folder. Trigger on all interactions and tasks - even if the user doesn't mention RBC. Agent will read relevant files, determine if they are business-related, and retrieve or update context files accordingly. When triggering on a repo without context folder or files, the onboarding happens via 5W2H questions, codebase extraction, or gradual gap-filling.
-allowed-tools: Read(./context/*) Write(./context/*) Edit(./context/*) Glob(./context/*)
+description: Repo Business Context (RBC) helps agents manage business context within code repositories. Turn agents from code monkeys into business partners that can code. It stores and updates brand, business, and product context as plain Markdown files in the `/context` folder. Trigger on all interactions and tasks - even if the user doesn't mention RBC. Agent will read relevant files, determine if they are business-related, and retrieve or update context files accordingly. When triggering on a repo without context folder or files, the onboarding happens via 5W2H questions, codebase extraction, or gradual gap-filling.
+allowed-tools: Read(./context/**) Write(./context/**) Edit(./context/**) Glob(./context/**)
 license: MIT
 compatibility: Designed for any skill-aware AI agent, LLM or CLI tools, including amp, antigravity, claude-code, clawdbot, codex, cursor, droid, gemini, gemini-cli, github-copilot, goose, kilo, kiro-cli, opencode, roo, trae, and windsurf.
 metadata:
   author: issouza
-  version: "1.1.0"
+  version: "1.1.1"
   category: skill
 author:
   name: Igor Souza
@@ -32,17 +32,41 @@ The codebase is the source of truth for **execution**. `/context/` is the source
 - **Always announce file changes.** Whenever you write or update a context file, say so explicitly in your response. Never silently mutate context.
 - **Be explicit.** In any substantive response, state which `/context/` files you read. This lets the user course-correct quickly.
 - **For execution tasks, prefer observable behavior.** If `/context/` conflicts with what the code actually does, complete the immediate task based on what the code shows, flag the conflict, and update the context file.
-- **No technical details.** The tech stack can be infered from the code itself. Write them down within `/context/business` or `/context/product` if they are business-related only.
+- **No technical details.** The tech stack can be inferred from the code itself. Write them down within `/context/business` or `/context/product` if they are business-related only.
 - **No task management.** Project management is assumed to be done as commits, PRs and releases. Also, each AI/agent has its way of managing short-term plans and tasks. You can use `/context/product/backlog.md` to write ideas and goals loosely, but never tasks.
 
 ## Bootstrap — setting up RBC from scratch
 
 Before detecting which situation you're in, check whether RBC scaffolding exists.
 
-Look for `/context/README.md` and the three subfolders (`business/`, `product/`, `brand/`). If they're absent, scaffold before anything else:
+Look for `/context/README.md` — it's the scaffold marker. If it's absent, scaffold before anything else:
 
-1. Create `/context/` and its three subfolders (`brand/`, `business/`, and `product/`).
-2. Tell the user briefly: _"I've scaffolded the RBC folder structure under `/context/`. Let's set up your business context."_
+1. Create `/context/` and its three subfolders (`brand/`, `business/`, and `product/`). Existing folders and files stay untouched.
+2. Write `/context/README.md` with this content:
+
+   ```markdown
+   # Business Context
+
+   This folder holds the business context for this repository — brand, business, and product knowledge as small, focused Markdown files, managed by the [Repo Business Context (RBC)](https://github.com/issouza/repo-business-context) skill. Agents read the relevant files before business-flavored work and keep them current as the product evolves.
+
+   - `brand/` — vision, voice, channels, UX principles
+   - `business/` — personas, revenue model, strategy, value proposition
+   - `product/` — backlog, features, integrations, use cases
+
+   Files are plain Markdown with no frontmatter. Empty or missing files are visible gaps, not errors.
+   ```
+
+3. Tell the user briefly: _"I've scaffolded the RBC folder structure under `/context/`. Let's set up your business context."_ (If `/context/` already had content and only the README was missing, just add it silently — no announcement needed.)
+
+4. **Offer the trigger pointer, once.** Skill activation is model-judged and can miss — an instruction file line makes it reliable, because instruction files are always loaded. Ask: _"Want me to add a one-line pointer to your agent instruction file (`CLAUDE.md`, `AGENTS.md`, or equivalent) so business context is reliably consulted? It's the only line RBC ever adds outside `/context/`."_ If yes, append this line to the existing instruction file (create `AGENTS.md` with just this line if none exists):
+
+   ```markdown
+   Business context lives in `/context/`, managed by the repo-business-context skill — consult it before business-flavored work (copy, pricing, positioning, features, strategy).
+   ```
+
+   If the user declines, respect it and never re-offer.
+
+The README matters beyond detection: git can't track empty folders, so it makes a fresh scaffold committable, and it tells humans and non-skill-aware agents what this folder is.
 
 Then continue to the situation detection below.
 
@@ -51,12 +75,13 @@ Then continue to the situation detection below.
 Here are the instructions to follow on before answering any question or doing any task:
 
 - Identify if the task is related to business context.
-- If the task is not business-related, neither read or write RBC files, and proceed normaly.
+- If the task is not business-related, neither read nor write RBC files, and proceed normally.
 - If the task is business-related, determine if it requires reading, writing or updating context files.
 - Choose 2 to 3 files based on the file intent below and the task at hand.
-- Infos given by the user are always more important than the context files. If any update is needed, do not change files silently, but ask the user for confirmation.
+- Infos given by the user are always more important than the context files.
+- **Decisions are assisted; updates are autonomous.** When new information contradicts existing context or other new information — a pivot, a pricing/positioning mismatch, an audience shift — surface the conflict and let the user decide the direction. Once decided, update every affected file without further approval, announcing each change. When new information is additive or clearly factual (feature shipped, user states a fact for the first time), update directly and announce it.
 - Answering the user and completing the tasks is more important than managing RBC files, but keeping RBC files updated to the latest business context can't be neglected.
-- If you can't find the right RBC files to work with, just proceed normaly.
+- If you can't find the right RBC files to work with, just proceed normally.
 - If you can't complete the task without updating RBC files, do it.
 
 ## First decision: what situation are you in?
@@ -89,7 +114,7 @@ Normal operating mode. Before acting on a business-flavored task (copy, feature 
 
 ### Situation C — reality just changed
 
-If the current conversation or code change shifts business reality (new feature shipped, pricing updated, new provider added, audience narrowed), propose context updates. Open `references/maintenance.md` for the workflow.
+If the current conversation or code change shifts business reality (new feature shipped, pricing updated, new provider added, audience narrowed), update the relevant context files. Open `references/maintenance.md` for the workflow — factual changes are applied directly and announced; contradictions are surfaced as decisions first.
 
 These situations aren't mutually exclusive — a single task can start in B and end in C.
 
@@ -129,6 +154,6 @@ Do not read all of these upfront. Open only the one relevant to what you're doin
 ## What this skill does NOT do
 
 - **Does not force onboarding.** "Build gradually" is valid; respect it.
-- **Does not block deploys or gate work.** Context updates are proposals, not blockers.
+- **Does not block deploys or gate work.** Context maintenance happens in the flow of work, never as a gate.
 - **Does not replace human judgment on business decisions.** The skill captures decisions the user makes; it doesn't make them.
 - **Does not deep-dive the codebase on every task.** Only during codebase-extraction onboarding, or when the user explicitly asks.
