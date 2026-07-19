@@ -50,15 +50,15 @@ One skill does everything:
 - **Bootstraps** `/context/` on first run — folder structure + README, no copying required
 - **Onboards** via a 7-question 5W2H flow (~5 min), codebase extraction, or gradual build-as-you-go (the default)
 - **Routes** each task to the 1–3 relevant context files — never the whole folder
-- **Proposes updates** when work shifts what's true about the product
+- **Keeps context current** — updates files when work shifts what's true about the product; asks first only when new facts contradict documented ones
 
 Your context lives in small, focused Markdown files:
 
 ```
 /context
-├── brand/      # assets, channels, ux-principles, vision, voice
-├── business/   # domain-model, personas, revenue-model, strategy, value-prop
-└── product/    # backlog, features, integrations, use-cases, ui-principles
+├── brand/      # channels, ux-principles, vision, voice
+├── business/   # personas, revenue-model, strategy, value-prop
+└── product/    # backlog, features, integrations, use-cases
 ```
 
 > [!NOTE]
@@ -104,9 +104,16 @@ npx skills add -g issouza/repo-business-context
 
 Once installed, open your repo in any supported AI tool.
 
+> [!TIP]
+> Skill activation is decided by the model, so it can occasionally miss. For reliable triggering, add one line to your repo's `CLAUDE.md` or `AGENTS.md` (the skill offers to add it during setup):
+>
+> ```
+> Business context lives in /context/, managed by the repo-business-context skill — consult it before business-flavored work (copy, pricing, positioning, features, strategy).
+> ```
+
 ## Going deeper
 
-Everything above is enough to get started. If you want to understand the framework in full — onboarding paths, file structure rationale, how the agent keeps context current across sessions — it's all in [`context/README.md`](context/README.md).
+Everything above is enough to get started. If you want to understand the framework in full — onboarding paths, file structure rationale, how the agent keeps context current across sessions — the skill *is* the documentation: read [`SKILL.md`](skills/repo-business-context/SKILL.md) and its [`references/`](skills/repo-business-context/references/).
 
 > [!TIP]
 > This repo itself is built with RBC. Browse [`/context`](context/) to see it working in a real project.
@@ -121,8 +128,8 @@ The final version is the simplest possible form: **one skill, no files to copy, 
 
 This is the version worth shipping.
 
-Two more decisions that followed the same logic: context files carry no frontmatter — plain Markdown, nothing to maintain. And the agent doesn't propose updates and wait for approval — it updates context autonomously as the product evolves, announcing each change so nothing is invisible.
+Two more decisions that followed the same logic: context files carry no frontmatter — plain Markdown, nothing to maintain. And updates are autonomous while decisions stay assisted: the agent updates context on its own as the product evolves, announcing each change so nothing is invisible — it only stops to ask when new information contradicts what's already documented, because choosing the direction is your call, not the agent's.
 
 ## License
 
-[MIT](LICENSE.txt) — Free to use, modify, and distribute. Feel free to keep mention this original repo in your project's README.
+[MIT](LICENSE.txt) — Free to use, modify, and distribute. Feel free to mention this original repo in your project's README.

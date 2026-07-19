@@ -12,6 +12,8 @@ Update whenever the current work **changes business reality** — not just code 
 
 ## How to update
 
+The operating rule: **decisions are assisted; updates are autonomous.** The user chooses the direction when facts conflict; you propagate the chosen direction across files without further approval.
+
 For clear factual changes (feature shipped, pricing stated explicitly in conversation): **update the file directly and announce it.**
 
 > _"Updated `business/revenue-model.md` — free tier raised to 50 requests/day."_
@@ -21,6 +23,14 @@ For uncertain inferences (reading between the lines, architecture implied by cod
 > _"Updated `product/features.md` based on new component added — social login. Correct me if that's off."_
 
 Announce every update. Never silently mutate a context file. One line is enough — no detailed explanation needed.
+
+## Consistency check before writing
+
+Before writing an update, glance at the files `references/routing.md` pairs with the one you're changing (a pricing change pairs with `value-prop.md`; an audience change pairs with `personas.md` and `strategy.md`). If the new fact contradicts any of them, **stop before writing** and surface it as a decision:
+
+> _"You positioned this for entry-level professionals in `business/personas.md`, but a $10k/month starter plan implies enterprise buyers. Rethink the pricing, or update the positioning?"_
+
+Once the user picks a direction, update **all** affected files in one pass and announce each. Catching these contradictions early is a core reason RBC exists — a mismatch between pricing and personas is a business problem, not a filing problem.
 
 ## When files disagree with each other or with the code
 
@@ -45,6 +55,6 @@ Don't run maintenance sweeps unprompted. Small in-flow updates are respectful; b
 ## Anti-patterns
 
 - **Don't rewrite context files to match your sense of style.** Preserve the user's language.
-- **Don't propose 5 updates at once.** Surface the most important 1–2 first; ask about the rest separately.
+- **Don't surface 5 conflicts at once.** Raise the most important 1–2 decisions first; handle the rest separately. (Plain factual updates don't need this rationing — apply and announce them.)
 - **Don't delete content without cause.** If something is stale and there's no clear replacement, write what's currently true instead of just deleting.
 - **Don't silently update.** Even when the update is obvious, announce it — one line.

@@ -10,9 +10,9 @@ Stop re-explaining your business to AI. Onboard in 5 minutes; context grows as y
 
 2. **Zero-setup option for vibe coders.** "Build gradually" is the default: skip the upfront flow, the agent asks 1–2 questions only when it hits a context gap during normal work.
 
-3. **Living document, not a spec.** The skill proposes updates as reality shifts. Drafts are cheap; only the user promotes to `active`. Context stays aligned without becoming a chore.
+3. **Living document, not a spec.** The agent updates context as reality shifts, announcing every change. Decisions are assisted — contradictions are surfaced for the user to resolve — but updates are autonomous. Context stays aligned without becoming a chore.
 
-4. **No runtime, no lock-in.** Markdown files + YAML frontmatter + one Claude skill. MIT license. No infrastructure. Zero conflict with any existing repo setup.
+4. **No runtime, no lock-in.** Plain Markdown files + one agent skill. No frontmatter, no infrastructure. MIT license. Zero conflict with any existing repo setup.
 
 5. **Selective loading prevents context rot.** Loading an entire business context file on every task degrades AI reasoning — models degrade measurably as input grows, losing focus on middle sections. RBC routes each task to 1–3 relevant files: the equivalent of RAG, without the infrastructure. Sharper responses, readable diffs, per-concept freshness tracking that a monolith can't provide.
 

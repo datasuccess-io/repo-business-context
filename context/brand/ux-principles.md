@@ -10,9 +10,9 @@ The Quick onboarding promise is the framework's lead. Every interaction that blo
 
 Skip options everywhere. "Just go" is always a valid answer. If a user says skip, we write something generic and move on — we never block on a missing answer.
 
-## 3. Autonomous, not gated
+## 3. Autonomous updates, assisted decisions
 
-The agent writes and updates context files without waiting for approval. Users correct what's wrong in conversation — the same way they correct code. No review ceremonies, no promotion steps.
+The agent writes and updates context files without waiting for approval. Users correct what's wrong in conversation — the same way they correct code. No review ceremonies, no promotion steps. The one exception: when new information contradicts documented context, the agent asks which direction is true before propagating the change — the decision belongs to the user, the file updates belong to the agent.
 
 ## 4. Transparent changes
 

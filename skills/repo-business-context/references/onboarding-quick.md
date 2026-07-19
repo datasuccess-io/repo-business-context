@@ -24,8 +24,8 @@ Open with a brief framing: _"I'll ask 7 short questions using the 5W2H method. S
 
 | Question | Primary file                            | Also fills if content fits              |
 | -------- | --------------------------------------- | --------------------------------------- |
-| What     | `business/vision.md`                    | `business/value-prop.md`                |
-| Why      | `business/vision.md` (problem section)  | `business/strategy.md`                  |
+| What     | `brand/vision.md`                       | `business/value-prop.md`                |
+| Why      | `brand/vision.md` (problem section)     | `business/strategy.md`                  |
 | Who      | `business/personas.md`                  | `business/strategy.md` (audience scope) |
 | Where    | `brand/channels.md`                     | `business/strategy.md` (go-to-market)   |
 | When     | `product/use-cases.md`                  | —                                       |

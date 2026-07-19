@@ -31,7 +31,7 @@ Do not silently write 8 files. Present inferences grouped, let the user confirm 
 
    > Based on the repo scan, here's what I'd write. Confirm and I'll create the files:
    >
-   > - **`business/vision.md`** — "A feedback widget for SaaS product teams." _(from README hero line 3)_
+   > - **`brand/vision.md`** — "A feedback widget for SaaS product teams." _(from README hero line 3)_
    > - **`product/integrations.md`** — Hubspot, Slack, Google Drive. _(from user onboarding and admin area)_
    > - **`brand/voice.md`** — "Technical, friendly, no marketing fluff." _(inferred from README tone)_
    > - …
