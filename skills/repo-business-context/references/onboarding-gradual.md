@@ -14,6 +14,16 @@ Check `references/routing.md` within this skill to see a list of possible files 
 
 The threshold: would a thoughtful collaborator ask the founder this before proceeding? If yes, ask.
 
+### The exception: don't ask what the code can answer
+
+This whole path is question-driven, with one carve-out — **`product/architecture.md`**. Never ask the user how their own system is put together; they'd rightly answer "read it." Here you **observe and write** instead:
+
+- If the file is missing and you just spent the task reading across modules, write down what you learned before you finish. You already paid the cost of discovering it — dropping it means the next agent pays again.
+- If the file exists and reality has drifted from it, correct it in the same turn and say so.
+- Only ask when the answer genuinely isn't in the repo: _why_ a provider was chosen, which limit you're actually up against, whether something is intentional or leftover. One question, in the flow of the work.
+
+This is the mechanism that makes a shallow onboarding self-correcting. The quick path can't produce this file and gradual gap-filling never surfaces it by asking — so it gets built here, incrementally, out of work that was happening anyway.
+
 ## How to ask
 
 **One or two sentences. Offer a default. Let the user skip.**
@@ -54,6 +64,8 @@ If you find yourself asking **3+ gap questions in one conversation**, suggest co
 > _"We've filled in a few things already. If it's useful, I can run the 5-minute 7-question onboarding and we'll have most of `/context/` drafted in one pass. Or we keep going as-is — your call."_
 
 Don't push. If they say keep going, keep going.
+
+The same escalation applies after a **quick** onboarding, which is shallow by design: it fills intent well and leaves the system map empty. If the repo has real code and `product/architecture.md` is still missing, offer a codebase pass (`references/onboarding-codebase.md`) — it's the one path that can draft that file. Offer once; otherwise let the observe-and-write rule above fill it in gradually.
 
 ## Guardrails
 

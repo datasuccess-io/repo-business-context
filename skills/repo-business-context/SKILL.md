@@ -6,7 +6,7 @@ license: MIT
 compatibility: Designed for any skill-aware AI agent, LLM or CLI tools, including amp, antigravity, claude-code, clawdbot, codex, cursor, droid, gemini, gemini-cli, github-copilot, goose, kilo, kiro-cli, opencode, roo, trae, and windsurf.
 metadata:
   author: issouza
-  version: "1.1.1"
+  version: "1.2.0"
   category: skill
 author:
   name: Igor Souza
@@ -32,7 +32,8 @@ The codebase is the source of truth for **execution**. `/context/` is the source
 - **Always announce file changes.** Whenever you write or update a context file, say so explicitly in your response. Never silently mutate context.
 - **Be explicit.** In any substantive response, state which `/context/` files you read. This lets the user course-correct quickly.
 - **For execution tasks, prefer observable behavior.** If `/context/` conflicts with what the code actually does, complete the immediate task based on what the code shows, flag the conflict, and update the context file.
-- **No technical details.** The tech stack can be inferred from the code itself. Write them down within `/context/business` or `/context/product` if they are business-related only.
+- **Don't duplicate what the code already states plainly.** If a reader can learn it cheaply from one file — the stack, a config value, a schema, a rules table — point at that file instead of copying it here. Copied technical detail is the fastest way to make `/context/` stale and untrustworthy.
+- **But do capture the picture no single file holds.** How the surfaces and modules fit together, which external service owns what and which of its limits actually constrains the design, which request paths carry no session, and the traps that already cost a production bug — none of that is recoverable from the code in reasonable time. It lives in someone's head, which makes it exactly what RBC exists to externalize. It belongs in `product/architecture.md`. The test is not "is this technical?" but **"is this cheap to learn from the code?"** — if yes, link it; if it spans modules or vendors, or exists only as tribal knowledge, write it down.
 - **No task management.** Project management is assumed to be done as commits, PRs and releases. Also, each AI/agent has its way of managing short-term plans and tasks. You can use `/context/product/backlog.md` to write ideas and goals loosely, but never tasks.
 
 ## Bootstrap — setting up RBC from scratch
@@ -51,22 +52,32 @@ Look for `/context/README.md` — it's the scaffold marker. If it's absent, scaf
 
    - `brand/` — vision, voice, channels, UX principles
    - `business/` — personas, revenue model, strategy, value proposition
-   - `product/` — backlog, features, integrations, use cases
+   - `product/` — architecture, backlog, features, integrations, use cases
 
    Files are plain Markdown with no frontmatter. Empty or missing files are visible gaps, not errors.
    ```
 
 3. Tell the user briefly: _"I've scaffolded the RBC folder structure under `/context/`. Let's set up your business context."_ (If `/context/` already had content and only the README was missing, just add it silently — no announcement needed.)
 
-4. **Offer the trigger pointer, once.** Skill activation is model-judged and can miss — an instruction file line makes it reliable, because instruction files are always loaded. Ask: _"Want me to add a one-line pointer to your agent instruction file (`CLAUDE.md`, `AGENTS.md`, or equivalent) so business context is reliably consulted? It's the only line RBC ever adds outside `/context/`."_ If yes, append this line to the existing instruction file (create `AGENTS.md` with just this line if none exists):
+4. **Offer the trigger pointer, once.** Skill activation is model-judged and can miss — an instruction file line makes it reliable, because instruction files are always loaded. Ask: _"Want me to add a one-line pointer to your agent instruction file (`CLAUDE.md`, `AGENTS.md`, or equivalent) so business context is reliably consulted? It's the only thing RBC ever writes outside `/context/`."_ If yes, append this to the existing instruction file (create `AGENTS.md` with just this if none exists):
 
    ```markdown
-   Business context lives in `/context/`, managed by the repo-business-context skill — consult it before business-flavored work (copy, pricing, positioning, features, strategy).
+   Business context lives in `/context/`, managed by the repo-business-context skill. Read the relevant files before writing user-facing copy, setting or changing pricing, planning a feature, choosing a provider, or making a positioning or audience call — and update them when that work changes what's true.
    ```
+
+   Name the triggers rather than saying "business-flavored work" — a vague instruction is an ignorable one. Keep it to a pointer: never copy RBC's operating rules into the instruction file, where they are paid on every task and go stale the moment the skill updates.
 
    If the user declines, respect it and never re-offer.
 
 The README matters beyond detection: git can't track empty folders, so it makes a fresh scaffold committable, and it tells humans and non-skill-aware agents what this folder is.
+
+### The architecture pointer — a second, separate offer
+
+When you first create `product/architecture.md` (during codebase onboarding, or on the fly during normal work), offer a pointer to it as well — **even if the user declined the pointer above, and even in a repo that was onboarded long ago.** This is a different offer with a different reason, not a re-ask.
+
+The reason: RBC deliberately loads only 1–3 files per task, which means a map that must be consulted **before** planning can be skipped exactly when it is needed most. Every other context file is recoverable — an agent that misses `brand/voice.md` writes slightly-off copy. An agent that misses `architecture.md` plans against a system that doesn't exist.
+
+Offer to append a short block naming the file, what it holds, when to read it, when to skip it, and that it must be kept current. Write it to fit the repo — the trigger list should name that system's actual surfaces and services. Skip cases matter as much as triggers: without them the pointer reads as "always read this," and gets ignored on the tenth trivial task.
 
 Then continue to the situation detection below.
 
