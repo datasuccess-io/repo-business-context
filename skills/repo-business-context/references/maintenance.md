@@ -10,6 +10,15 @@ Update whenever the current work **changes business reality** — not just code 
 
 **Refactors and bug fixes usually do NOT need context updates.** Only update when the _truth of the product_ changed — what it does, who it's for, how it's priced, how it runs, how it sounds.
 
+**`product/architecture.md` is the exception to that rule.** For this one file, structural change _is_ the truth, so work that looks like "just a refactor" can be exactly what it needs to record. Update it when:
+
+- a surface, module, or entry point is added, removed, or renamed;
+- an external service is added, dropped, or swapped — or you discover which of its limits actually constrains the design;
+- a request path is redrawn, or one gains or loses an auth boundary;
+- a bug turns out to have been caused by something non-obvious about how the pieces fit. **Write the trap down.** A trap that cost a production bug once will cost another unless it's recorded — this is the highest-value content in the file, and the content least likely to exist anywhere else.
+
+The bar is lower here than elsewhere, because the cost is asymmetric: a slightly stale architecture note is a nuisance, while a missing one sends the next plan into a system that no longer exists.
+
 ## How to update
 
 The operating rule: **decisions are assisted; updates are autonomous.** The user chooses the direction when facts conflict; you propagate the chosen direction across files without further approval.

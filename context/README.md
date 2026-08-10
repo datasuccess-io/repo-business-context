@@ -4,6 +4,6 @@ This folder holds the business context for this repository — brand, business, 
 
 - `brand/` — vision, voice, channels, UX principles
 - `business/` — personas, revenue model, strategy, value proposition
-- `product/` — backlog, features, integrations, use cases
+- `product/` — architecture, backlog, features, integrations, use cases
 
 Files are plain Markdown with no frontmatter. Empty or missing files are visible gaps, not errors.

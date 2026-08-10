@@ -58,7 +58,7 @@ Your context lives in small, focused Markdown files:
 /context
 ├── brand/      # channels, ux-principles, vision, voice
 ├── business/   # personas, revenue-model, strategy, value-prop
-└── product/    # backlog, features, integrations, use-cases
+└── product/    # architecture, backlog, features, integrations, use-cases
 ```
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Once installed, open your repo in any supported AI tool.
 > Skill activation is decided by the model, so it can occasionally miss. For reliable triggering, add one line to your repo's `CLAUDE.md` or `AGENTS.md` (the skill offers to add it during setup):
 >
 > ```
-> Business context lives in /context/, managed by the repo-business-context skill — consult it before business-flavored work (copy, pricing, positioning, features, strategy).
+> Business context lives in /context/, managed by the repo-business-context skill. Read the relevant files before writing user-facing copy, setting or changing pricing, planning a feature, choosing a provider, or making a positioning or audience call — and update them when that work changes what's true.
 > ```
 
 ## Going deeper

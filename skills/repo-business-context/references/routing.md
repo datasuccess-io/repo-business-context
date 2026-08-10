@@ -28,27 +28,30 @@ Use the tables below to infer which files to load for any given task.
 | `business/revenue-model.md` | Pricing approach, plans and packaging, monetization mechanics, billing notes.                                         |
 | `business/strategy.md`      | Goals and positioning, focus areas, priorities, differentiators, and key bets.                                        |
 | `business/value-prop.md`    | Core promise and benefits, proof points, and why we win vs. alternatives.                                             |
+| `product/architecture.md`   | How the system is put together: runtime surfaces, modules, external services and their limits, key request paths.     |
 | `product/backlog.md`        | Loosely organized ideas and next steps; high-level priorities and near-term bets.                                     |
 | `product/features.md`       | Shipped and in-progress capabilities with short descriptions and status/context.                                      |
 | `product/integrations.md`   | External services/tools we interoperate with, scope, rationale, and status.                                           |
 | `product/use-cases.md`      | Representative workflows and scenarios showing who does what and why.                                                 |
 
-| Task type                                                      | Suggested files to read/write                                                                 |
-| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Understand the overall product and business                    | `brand/vision.md`, `business/strategy.md`, `product/features.md`                              |
-| Understand the target user                                     | `business/personas.md`, `business/value-prop.md`                                              |
-| Propose or design a feature                                    | `product/features.md`, `product/use-cases.md`, `business/strategy.md`, `business/personas.md` |
-| Write UX copy or in-app UI text                                | `brand/voice.md`, `brand/ux-principles.md`, `product/features.md`, `business/personas.md`     |
-| Write marketing copy (landing page, email, social, ads)        | `business/value-prop.md`, `business/personas.md`, `brand/voice.md`, `brand/channels.md`       |
-| Work on pricing, plans, or billing                             | `business/revenue-model.md`, `business/value-prop.md`, `business/strategy.md`                 |
-| Choose a provider or integration (business impact)             | `product/integrations.md`, `business/strategy.md`                                             |
-| Plan next cycle or prioritize work                             | `product/backlog.md`, `business/strategy.md`                                                  |
-| Onboard a new agent or teammate                                | `brand/vision.md`, `product/features.md`, `brand/voice.md`                                    |
-| Write commit messages, PR descriptions, release notes          | `product/features.md`, `brand/voice.md`                                                       |
-| Respond to user feedback or frame a customer conversation      | `business/personas.md`, `brand/voice.md`, `business/value-prop.md`                            |
-| New feature shipped, or significant change to existing feature | `product/features.md`, `product/backlog.md`                                                   |
-| Pricing, plan, or billing change                               | `business/revenue-model.md`, `business/value-prop.md`                                         |
-| Audience, ICP, or positioning shift                            | `business/personas.md`, `business/strategy.md`, `business/value-prop.md`                      |
-| Brand voice or tone evolution                                  | `brand/voice.md`                                                                              |
-| New go-to-market channel                                       | `brand/channels.md`                                                                           |
-| Product direction decision with long-term implications         | `brand/vision.md`, `business/strategy.md`                                                     |
+| Task type                                                      | Suggested files to read/write                                                                    |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Understand the overall product and business                    | `brand/vision.md`, `business/strategy.md`, `product/features.md`                                 |
+| Understand the target user                                     | `business/personas.md`, `business/value-prop.md`                                                 |
+| Propose or design a feature                                    | `product/features.md`, `product/architecture.md`, `product/use-cases.md`, `business/strategy.md` |
+| Plan a change spanning modules, or touching auth/tenancy/infra | `product/architecture.md`, `product/features.md`                                                 |
+| Write UX copy or in-app UI text                                | `brand/voice.md`, `brand/ux-principles.md`, `product/features.md`, `business/personas.md`        |
+| Write marketing copy (landing page, email, social, ads)        | `business/value-prop.md`, `business/personas.md`, `brand/voice.md`, `brand/channels.md`          |
+| Work on pricing, plans, or billing                             | `business/revenue-model.md`, `business/value-prop.md`, `business/strategy.md`                    |
+| Choose a provider or integration (business impact)             | `product/integrations.md`, `product/architecture.md`, `business/strategy.md`                     |
+| Plan next cycle or prioritize work                             | `product/backlog.md`, `business/strategy.md`                                                     |
+| Onboard a new agent or teammate                                | `brand/vision.md`, `product/features.md`, `product/architecture.md`, `brand/voice.md`            |
+| Write commit messages, PR descriptions, release notes          | `product/features.md`, `brand/voice.md`                                                          |
+| Respond to user feedback or frame a customer conversation      | `business/personas.md`, `brand/voice.md`, `business/value-prop.md`                               |
+| New feature shipped, or significant change to existing feature | `product/features.md`, `product/backlog.md`                                                      |
+| New surface/module/service added, or a request path redrawn    | `product/architecture.md`, `product/features.md`                                                 |
+| Pricing, plan, or billing change                               | `business/revenue-model.md`, `business/value-prop.md`                                            |
+| Audience, ICP, or positioning shift                            | `business/personas.md`, `business/strategy.md`, `business/value-prop.md`                         |
+| Brand voice or tone evolution                                  | `brand/voice.md`                                                                                 |
+| New go-to-market channel                                       | `brand/channels.md`                                                                              |
+| Product direction decision with long-term implications         | `brand/vision.md`, `business/strategy.md`                                                        |
